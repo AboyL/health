@@ -5,15 +5,16 @@ export default{
         url,
         data
     }) {
-        console.log("request");
-        axios({
+        return axios({
             url: url,
             method: method,
             data: data,
             baseURL: "http://localhost:8080/api"
         })
-            .then(function (res) {
-                console.log(res);
-            })
+        .then((result) => {
+            return result.data            
+        }).catch((err) => {
+            return err
+        });
     }
 }

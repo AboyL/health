@@ -20,7 +20,9 @@
 import Header from "components/layout/Header.vue";
 import SingleLineContainer from "components/layout/SingleLineContainer.vue";
 import SimpleFooter from "components/layout/SimpleFooter.vue";
-import loginService from './login.service'
+import loginService from "./login.service";
+import util from "util";
+
 export default {
   name: "Login",
   components: {
@@ -59,12 +61,51 @@ export default {
   },
   methods: {
     submit: function(fromData) {
-      console.log(fromData);
-      console.log(loginService);
-      loginService.login();
+      let validateResult = this.validate(fromData);
+      if (validateResult.status) {
+        loginService.login(fromData).then(res => {
+          if (res.status) {
+            this.$message({
+              message: res.msg,
+              type: "success"
+            });
+          } else {
+            console.log(res.msg);
+            this.$message({
+              message: res.msg,
+              type: "warning"
+            });
+          }
+        });
+      } else {
+        this.$message({
+          message: validateResult.msg,
+          type: "warning"
+        });
+      }
+    },
+    validate: function(fromData) {
+      let status = {
+        status: true,
+        msg: "检验通过"
+      };
+      if (!fromData.username) {
+       return status = {
+          status: false,
+          msg: "用户名不能为空"
+        };
+      }
+      if (!fromData.password) {
+       return status = {
+          status: false,
+          msg: "密码不能为空"
+        };
+      }
+      return status;``
     }
   }
 };
 </script>
 <style scoped lang='scss'>
+
 </style>

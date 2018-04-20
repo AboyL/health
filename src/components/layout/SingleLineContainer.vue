@@ -3,7 +3,7 @@
   <div class="content-box">
       <el-input 
         v-for="item of inputList"
-        v-model="formData[item.model]" 
+        v-model.trim="formData[item.model]" 
         :placeholder="item.placeholder" 
         class="single-line"
         :key="item.model"

@@ -1,10 +1,10 @@
-import util from 'util/util.js'
+import util from 'util'
 export default {
-    login(){
-        console.log("login service");
-        util.request(
+    async login(data){
+        return await util.request(
             {
-                url:'login'
+                url:'user/login',
+                data:data
             }
         )
     }
