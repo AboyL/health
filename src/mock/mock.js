@@ -18,3 +18,11 @@ Mock.mock(`${baseUrl}user/login`, (url) => {
     }
     return result;
 })
+Mock.mock(`${baseUrl}user/register`, (url) => {
+    let data=JSON.parse(url.body);
+    let result={};
+    return {
+        status: 1,
+        msg: "注册成功"            
+    };
+})

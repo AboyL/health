@@ -7,5 +7,13 @@ export default {
                 data:data
             }
         )
+    },
+    async register(data){
+        return await util.request(
+            {
+                url:'user/register',
+                data:data
+            }
+        )
     }
 }

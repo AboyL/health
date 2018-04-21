@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from 'views/login/Login'
-import Register from 'views/login/Register'
-import ForgetPass from 'views/login/ForgetPass'
+import Login from 'views/user/Login'
+import Register from 'views/user/Register'
+import ForgetPass from 'views/user/ForgetPass'
 
 
 Vue.use(Router)
