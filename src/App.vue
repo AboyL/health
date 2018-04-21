@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition 
+    <transition
       name="fade"
       enter-active-class="animated bounceOutRight"
       >
@@ -11,8 +11,8 @@
 
 <script>
 export default {
-  name: "App"
-};
+  name: 'App'
+}
 </script>
 
 <style>

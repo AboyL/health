@@ -17,23 +17,23 @@
 </template>
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
   props: {
-    hasHeaderLeft:{
-      type:Boolean,
-      default:true
+    hasHeaderLeft: {
+      type: Boolean,
+      default: true
     },
     title: {
       type: String,
       required: true
     }
   },
-  methods:{
-    back(){
+  methods: {
+    back () {
       this.$router.go(-1)
     }
   }
-};
+}
 </script>
 <style scoped lang='scss'>
 

@@ -1,35 +1,48 @@
 import util from 'util'
 export default {
-    async login(data){
-        return await util.request(
-            {
-                url:'user/login',
-                data:data
-            }
-        )
-    },
-    async register(data){
-        return await util.request(
-            {
-                url:'user/register',
-                data:data
-            }
-        )
-    },
-    async getQuestion(data){
-        return await util.request(
-            {
-                url:'user/getQuestion',
-                data:data
-            }
-        )
-    },
-    async checkAnswer(data){
-        return await util.request(
-            {
-                url:'user/checkAnswer',
-                data:data
-            }
-        )
-    },
+  async login (data) {
+    let reslut = await util.request(
+      {
+        url: 'user/login',
+        data: data
+      }
+    )
+    return reslut
+  },
+  async register (data) {
+    let reslut = await util.request(
+      {
+        url: 'user/register',
+        data: data
+      }
+    )
+    return reslut
+  },
+  async getQuestion (data) {
+    let reslut = await util.request(
+      {
+        url: 'user/getQuestion',
+        data: data
+      }
+    )
+    return reslut
+  },
+  async checkAnswer (data) {
+    let reslut = await util.request(
+      {
+        url: 'user/checkAnswer',
+        data: data
+      }
+    )
+    return reslut
+  },
+  async resetPassword (data) {
+    let reslut = await util.request(
+      {
+        url: 'user/resetPassword',
+        data: data
+      }
+    )
+    return reslut
+  }
 }

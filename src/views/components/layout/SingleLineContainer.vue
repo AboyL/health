@@ -10,20 +10,20 @@
     >
     {{item.content}}
     </div>
-      <el-input 
-        v-model.trim="formData[item.model]" 
-        v-if="item.type==='input'"        
+      <el-input
+        v-model.trim="formData[item.model]"
+        v-if="item.type==='input'"
         class="single-line"
-        :placeholder="item.placeholder" 
+        :placeholder="item.placeholder"
         :type="item.inputType?item.inputType:'text'"
         :key="item.model"
       >
       </el-input>
     </template>
 
-      <el-button 
-      type="success" 
-      round 
+      <el-button
+      type="success"
+      round
       class="single-button"
       @click="submit"
       >{{buttonContent.text}}
@@ -32,10 +32,9 @@
 </div>
 </template>
 
-
 <script>
 export default {
-  name: "SingleLineContainer",
+  name: 'SingleLineContainer',
   props: {
     singleLineList: {
       type: Array,
@@ -46,28 +45,27 @@ export default {
       required: true
     }
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   computed: {
-    formData: function() {
-      let data = {};
+    formData: function () {
+      let data = {}
       for (let d of this.singleLineList) {
-        if (d.type === "input") {
-          data[d.model] = "";
+        if (d.type === 'input') {
+          data[d.model] = ''
         }
       }
-      return data;
+      return data
     }
   },
   methods: {
-    submit: function() {
-      this.$emit("submit", this.formData);
+    submit: function () {
+      this.$emit('submit', this.formData)
     }
   }
-};
+}
 </script>
-
 
 <style scoped lang='scss'>
 .content-box {
