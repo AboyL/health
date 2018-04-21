@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-21 15:53:51
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-21 15:53:51
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-21 16:35:17
  */
 
 import axios from 'axios'
@@ -43,6 +43,9 @@ export default{
   },
   goLogin () {
     router.push({name: 'Login'})
+  },
+  goTabs () {
+    router.push({name: 'Tabs'})
   }
 
 }
