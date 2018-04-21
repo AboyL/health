@@ -1,9 +1,8 @@
 <template>
   <div class="tab-user">
-    <Header :hasHeaderLeft=false :title="'个人信息'"></Header>
-    <LabelList
-    :LabelList="LabelList"
-    ></LabelList>
+    <Header :hasHeaderLeft=false
+            :title="'个人信息'"></Header>
+    <LabelList :LabelList="LabelList"></LabelList>
   </div>
 </template>
 <script>
@@ -41,7 +40,7 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-  .tab-user {
-    height: 100%;
-  }
+.tab-user {
+  height: 100%;
+}
 </style>

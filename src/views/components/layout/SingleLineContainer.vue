@@ -5,37 +5,30 @@
  * @Last Modified time: 2018-04-21 19:36:05
  */
 <template>
-<div>
-  <div class="content-box">
-    <template
-        v-for="item of singleLineList"
-    >
-    <div class="single-line-div single-line"
-        :key="item.model"
-        v-if="item.type==='div'"
-    >
-    {{item.content}}
-    </div>
-      <el-input
-        v-model.trim="formData[item.model]"
-        v-if="item.type==='input'"
-        class="single-line"
-        :placeholder="item.placeholder"
-        :type="item.inputType?item.inputType:'text'"
-        :key="item.model"
-      >
-      </el-input>
-    </template>
-      <el-button
-      v-if="buttonContent"
-      type="success"
-      round
-      class="single-button"
-      @click="submit"
-      >{{buttonContent.text}}
+  <div>
+    <div class="content-box">
+      <template v-for="item of singleLineList">
+        <div class="single-line-div single-line"
+             :key="item.model"
+             v-if="item.type==='div'">
+          {{item.content}}
+        </div>
+        <el-input v-model.trim="formData[item.model]"
+                  v-if="item.type==='input'"
+                  class="single-line"
+                  :placeholder="item.placeholder"
+                  :type="item.inputType?item.inputType:'text'"
+                  :key="item.model">
+        </el-input>
+      </template>
+      <el-button v-if="buttonContent"
+                 type="success"
+                 round
+                 class="single-button"
+                 @click="submit">{{buttonContent.text}}
       </el-button>
     </div>
-</div>
+  </div>
 </template>
 
 <script>

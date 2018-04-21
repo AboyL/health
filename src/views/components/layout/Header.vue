@@ -47,7 +47,7 @@ export default {
 
 .header {
   position: relative;
-  background: linear-gradient(#8cf3d2, #8cf39c, #00FF70);
+  background: linear-gradient(#8cf3d2, #8cf39c, #00ff70);
   color: $fontColor;
   border-bottom: 1px solid $border-color;
   @include hf-height-lineHeight;
