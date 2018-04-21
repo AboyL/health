@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-21 15:55:46
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-21 15:55:46
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-21 16:36:12
  */
 <template>
   <div class="container">
@@ -75,7 +75,10 @@ export default {
         loginService.login(fromData).then(res => {
           if (res.status) {
             util.successMessage({
-              message: res.msg
+              message: res.msg,
+              onClose: () => {
+                util.goTabs()
+              }
             })
           } else {
             util.warningMessage({
