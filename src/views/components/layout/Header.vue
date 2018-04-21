@@ -42,24 +42,23 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-
-@import "~style/variable.scss";
-@import "~style/mixin.scss";
+@import '~style/variable.scss';
+@import '~style/mixin.scss';
 
 .header {
-    position: relative;
-    background: $headerBgColor;
-    color: $fontColor;
-    border-bottom: 1px solid $border-color;
-    @include hf-height-lineHeight;
-    .header-left {
-        @include vertical-center;
-        font-size: 25px;
-        vertical-align: middle;
-    }
-    .title {
-        @include horizontal-center;
-        line-height: 0.86rem;
-    }
+  position: relative;
+  background: linear-gradient(#8cf3d2, #8cf39c, #00FF70);
+  color: $fontColor;
+  border-bottom: 1px solid $border-color;
+  @include hf-height-lineHeight;
+  .header-left {
+    @include vertical-center;
+    font-size: 25px;
+    vertical-align: middle;
+  }
+  .title {
+    @include horizontal-center;
+    line-height: 0.86rem;
+  }
 }
 </style>

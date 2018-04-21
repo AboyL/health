@@ -23,6 +23,9 @@
         top: 0px !important;
         left: 0px !important;
         right: 0px !important;
+        .el-tab-pane{
+            height: 100% !important;
+        }
     }
     .el-tabs__header {
         position: absolute !important;

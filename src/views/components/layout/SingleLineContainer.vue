@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:54:33
  * @Last Modified by: L
- * @Last Modified time: 2018-04-21 15:56:15
+ * @Last Modified time: 2018-04-21 19:36:05
  */
 <template>
 <div>
@@ -26,8 +26,8 @@
       >
       </el-input>
     </template>
-
       <el-button
+      v-if="buttonContent"
       type="success"
       round
       class="single-button"
@@ -47,8 +47,7 @@ export default {
       required: true
     },
     buttonContent: {
-      type: Object,
-      required: true
+      type: Object
     }
   },
   data () {
