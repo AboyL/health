@@ -1,7 +1,14 @@
 @import './mixin.scss';
+@import './variable.scss';
 .el-message{
-    min-width: 100px !important;
+    min-width: 2rem !important;
     top: 50% !important;
     left: 50% !important;    
     transform: translate(-50%,-50%) !important;
+
+}
+.el-input__inner{
+    border: none !important;
+    border-bottom: 1px solid $border-color !important;
+    padding-left: .2rem  !important;
 }

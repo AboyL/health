@@ -2,7 +2,7 @@
   <div class="container">
     <Header :title="'注册'"></Header>
     <SingleLineContainer
-      :inputList="inputList"
+      :singleLineList="singleLineList"
       :buttonContent="buttonContent"
       @submit="submit"
     ></SingleLineContainer>
@@ -16,7 +16,6 @@ import SimpleFooter from "components/layout/SimpleFooter.vue";
 import loginService from "./login.service";
 import util from "util";
 
-
 export default {
   name: "Register",
   components: {
@@ -25,26 +24,33 @@ export default {
   },
   data() {
     return {
-      inputList: [
+      singleLineList: [
         {
           model: "username",
-          placeholder: "请输入用户名称"
+          placeholder: "请输入用户名称",
+          type: "input"
         },
         {
           model: "password",
-          placeholder: "请输入密码"
+          placeholder: "请输入密码",
+          type: "input",
+          inputType: "password"
         },
         {
           model: "confirmPassword",
-          placeholder: "请确认密码"
+          placeholder: "请确认密码",
+          type: "input",
+          inputType: "password"
         },
         {
           model: "question",
-          placeholder: "请输入找回密码问题"
+          placeholder: "请输入找回密码问题",
+          type: "input",
         },
         {
           model: "anwser",
-          placeholder: "请输入问题答案"
+          placeholder: "请输入问题答案",
+          type: "input",
         }
       ],
       buttonContent: {

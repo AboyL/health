@@ -5,7 +5,7 @@
     :title="'登录'"
     ></Header>
     <SingleLineContainer
-      :inputList="inputList"
+      :singleLineList="singleLineList"
       :buttonContent="buttonContent"
       @submit="submit"
     >
@@ -32,14 +32,17 @@ export default {
   },
   data() {
     return {
-      inputList: [
+      singleLineList: [
         {
           model: "username",
-          placeholder: "请输入用户名称"
+          placeholder: "请输入用户名称",
+          type: "input"
         },
         {
           model: "password",
-          placeholder: "请输入密码"
+          placeholder: "请输入密码",
+          type: "input",
+          inputType: "password"
         }
       ],
       buttonContent: {
@@ -65,22 +68,19 @@ export default {
       if (validateResult.status) {
         loginService.login(fromData).then(res => {
           if (res.status) {
-            this.$message({
+             util.successMessage({
               message: res.msg,
-              type: "success"
             });
           } else {
             console.log(res.msg);
-            this.$message({
+             util.warningMessage({
               message: res.msg,
-              type: "warning"
             });
           }
         });
       } else {
-        this.$message({
+         util.warningMessage({
           message: validateResult.msg,
-          type: "warning"
         });
       }
     },
@@ -90,16 +90,16 @@ export default {
         msg: "检验通过"
       };
       if (!fromData.username) {
-       return status = {
+        return (status = {
           status: false,
           msg: "用户名不能为空"
-        };
+        });
       }
       if (!fromData.password) {
-       return status = {
+        return (status = {
           status: false,
           msg: "密码不能为空"
-        };
+        });
       }
       return status;
     }
