@@ -18,7 +18,45 @@ import SingleLineContainer from "components/layout/SingleLineContainer.vue";
 import SimpleFooter from "components/layout/SimpleFooter.vue";
 
 import util from "util";
-
+import loginService from "./login.service";
+let step0SingleLineList = () => {
+  return [
+    {
+      model: "username",
+      placeholder: "请输入用户名称",
+      type: "input"
+    }
+  ];
+};
+let step1SingleLineList = res => {
+  return [
+    {
+      content: res.data.question,
+      type: "div"
+    },
+    {
+      model: "answer",
+      placeholder: "请输入找回密码答案",
+      type: "input"
+    }
+  ];
+};
+let step2SingleLineList = () => {
+  return [
+    {
+      model: "password",
+      placeholder: "请输入密码",
+      type: "input",
+      inputType: "password"
+    },
+    {
+      model: "confirmPassword",
+      placeholder: "请确认密码",
+      type: "input",
+      inputType: "password"
+    }
+  ];
+};
 export default {
   name: "Register",
   components: {
@@ -35,55 +73,12 @@ export default {
           text: "上一步",
           cb: this.previous
         }
-      ]
+      ],
+      singleLineList: step0SingleLineList(),
+      primaryQuestion:{},
     };
   },
   computed: {
-    singleLineList: function() {
-      let list = [];
-      switch (this.step) {
-        case 0:
-          list = [
-            {
-              model: "username",
-              placeholder: "请输入用户名称",
-              type:'input',
-            }
-          ];
-          break;
-        case 1:
-          list = [
-            {
-              content: "问题是",
-              placeholder: "请输入用户问题",
-              type:'div',              
-            },
-            {
-              model: "anwser",
-              placeholder: "请输入找回密码答案",
-              type:'input',     
-            }
-          ];
-          break;
-        case 2:
-          list = [
-            {
-              model: "password",
-              placeholder: "请输入密码",
-              type:'input',      
-              inputType:"password",                               
-            },
-            {
-              model: "confirmPassword",
-              placeholder: "请确认密码",
-              type:'input',              
-              inputType:"password",                       
-            }
-          ];
-          break;
-      }
-      return list;
-    },
     buttonContent: function() {
       let text = "";
       if (this.step === 2) {
@@ -107,7 +102,7 @@ export default {
           canSubmit = false;
         }
       } else if (this.step === 1) {
-        if (!fromData.anwser) {
+        if (!fromData.answer) {
           util.warningMessage({
             message: "回答不能为空"
           });
@@ -134,20 +129,46 @@ export default {
         }
       }
       if (canSubmit) {
-        this.next();
+        this.next(fromData);
       }
     },
-    next: function() {
-      if (this.step === 2) {
-      } else {
-        ++this.step;
+    next: function(fromData) {
+      if (this.step === 0) {
+        // 获取用户问题
+        loginService.getQuestion(fromData).then(res => {
+          if (res.status) {
+            ++this.step;
+            this.primaryQuestion=res;
+            this.singleLineList = step1SingleLineList(res);
+          } else {
+            util.warningMessage({
+              message: res.msg
+            });
+          }
+        });
+      } else if (this.step === 1) {
+        loginService.checkAnswer(fromData).then(res => {
+          if (res.status) {
+            ++this.step;
+            this.singleLineList = step2SingleLineList();
+          } else {
+            util.warningMessage({
+              message: res.msg
+            });
+          }
+        });
       }
     },
     previous: function() {
-      if (this.step === 0) {
-      } else {
+      if (this.step === 1) {
         --this.step;
+        this.singleLineList = step0SingleLineList();
+      } else if (this.step === 2) {
+        --this.step;
+        this.singleLineList = step1SingleLineList(this.primaryQuestion);
       }
+      console.log('previous');
+      console.log(this.step);
     }
   }
 };

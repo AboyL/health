@@ -48,7 +48,7 @@ export default {
           type: "input",
         },
         {
-          model: "anwser",
+          model: "answer",
           placeholder: "请输入问题答案",
           type: "input",
         }
@@ -112,7 +112,7 @@ export default {
           msg: "找回密码问题不能为空"
         });
       }
-      if (!fromData.anwser) {
+      if (!fromData.answer) {
         return (status = {
           status: false,
           msg: "找回密码问题答案不能为空"

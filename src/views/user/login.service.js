@@ -15,5 +15,21 @@ export default {
                 data:data
             }
         )
-    }
+    },
+    async getQuestion(data){
+        return await util.request(
+            {
+                url:'user/getQuestion',
+                data:data
+            }
+        )
+    },
+    async checkAnswer(data){
+        return await util.request(
+            {
+                url:'user/checkAnswer',
+                data:data
+            }
+        )
+    },
 }
