@@ -1,3 +1,9 @@
+/*
+ * @Author: L
+ * @Date: 2018-04-21 15:55:19
+ * @Last Modified by:   L
+ * @Last Modified time: 2018-04-21 15:55:19
+ */
 <template>
   <div class="container">
     <Header :title="'注册'"></Header>

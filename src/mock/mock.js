@@ -1,3 +1,9 @@
+/*
+ * @Author: L
+ * @Date: 2018-04-21 15:56:36
+ * @Last Modified by:   L
+ * @Last Modified time: 2018-04-21 15:56:36
+ */
 let Mock = require('mockjs')
 let baseUrl = 'http://localhost:8080/api/'
 Mock.setup({
