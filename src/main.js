@@ -2,13 +2,14 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:24
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 15:20:37
+ * @Last Modified time: 2018-04-22 19:40:47
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 
 import './style/index.scss'
 import './style/svgIcon.js'
@@ -31,6 +32,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
   render: h => h(App)

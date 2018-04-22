@@ -1,17 +1,17 @@
 <template>
   <div class="tab-home">
-    <CitysCascader class="cascader"></CitysCascader>
+    <HospitalCascader class="cascader"></HospitalCascader>
     <DotItemList :itemList="itemList"></DotItemList>
   </div>
 </template>
 <script>
-import CitysCascader from 'components/cascader/CitysCascader.vue'
+import HospitalCascader from 'components/cascader/HospitalCascader.vue'
 import DotItemList from 'components/layout/DotItemList.vue'
 
 export default {
   name: 'TabUser',
   components: {
-    CitysCascader,
+    HospitalCascader,
     DotItemList
   },
   data () {

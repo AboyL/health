@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 15:21:02
+ * @Last Modified time: 2018-04-22 20:12:33
  */
 <template>
   <div class="container">
@@ -27,9 +27,9 @@
 <script>
 import TabUser from './components/tab-user'
 import TabHome from './components/tab-home'
-
 import Header from 'components/layout/Header.vue'
 
+import tabsService from './Tabs.service.js'
 export default {
   name: 'Tabs',
   components: {
@@ -57,6 +57,13 @@ export default {
     changeTab: function (index) {
       this.headerTitleIndex = index
     }
+  },
+  mounted () {
+    // 加载医院数据
+    tabsService.getHospitals().then((res) => {
+      console.log(res)
+      this.$store.commit('setHospitals', res)
+    })
   }
 }
 </script>
