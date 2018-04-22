@@ -19,3 +19,7 @@
     height: $headerHeight;
     line-height: $headerHeight;
 }
+
+@mixin gradual-background{
+    background: linear-gradient(#3399cc, rgba(3, 166, 228, 0.7));    
+}
