@@ -2,23 +2,18 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:46
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 10:39:42
+ * @Last Modified time: 2018-04-22 15:21:18
  */
 <template>
   <div class="container">
     <Header class="header"
-    :hasHeaderLeft=false
-    :title="'登录'"
-    ></Header>
-    <SingleLineContainer
-      :singleLineList="singleLineList"
-      :buttonContent="buttonContent"
-      @submit="submit"
-    >
+            :hasHeaderLeft=false
+            :title="'登录'"></Header>
+    <SingleLineContainer :singleLineList="singleLineList"
+                         :buttonContent="buttonContent"
+                         @submit="submit">
     </SingleLineContainer>
-    <SimpleFooter
-    :footerList="footerList"
-    ></SimpleFooter>
+    <SimpleFooter :footerList="footerList"></SimpleFooter>
   </div>
 
 </template>
@@ -115,10 +110,9 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-.container{
-  // background-image: url(../../assets/login.gif);
+.container {
   height: 100%;
-  .header{
+  .header {
     margin-bottom: 1.5rem;
   }
 }

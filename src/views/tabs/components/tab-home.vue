@@ -18,8 +18,16 @@ export default {
     return {
       itemList: [
         {
-          key: 'hospitalRegistration',
+          key: 'hospital_registration',
           content: '挂号'
+        },
+        {
+          key: 'my_advisory',
+          content: '我的咨询'
+        },
+        {
+          key: 'medical_history',
+          content: '我的病历'
         }
       ]
     }
@@ -29,8 +37,8 @@ export default {
 <style scoped lang='scss'>
 .tab-home {
   height: 100%;
-  .cascader{
-    margin-bottom: .7rem;
+  .cascader {
+    margin-bottom: 0.7rem;
   }
 }
 </style>

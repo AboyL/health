@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-21 15:54:39
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-21 15:54:39
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-22 15:18:42
  */
 <template>
   <div class="container">
@@ -201,4 +201,5 @@ export default {
 <style scoped lang='scss'>
 @import "~style/variable.scss";
 @import "~style/mixin.scss";
+
 </style>

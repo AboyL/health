@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 10:52:33
+ * @Last Modified time: 2018-04-22 15:21:02
  */
 <template>
   <div class="container">
@@ -61,8 +61,5 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-.container {
-  width: 100%;
-  height: 100%;
-}
+
 </style>

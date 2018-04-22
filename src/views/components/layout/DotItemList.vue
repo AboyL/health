@@ -22,14 +22,20 @@ export default {
 .list {
   display: flex;
   flex-wrap:wrap;
+  justify-content: center;
   padding: 0.3rem;
   .item {
     @include gradual-background;
+    $size:1rem;
     padding: 0.3rem;
+    margin: .1rem;
+    font-size: .1rem;
     border-radius: 50%;
-    width: 0.5rem;
-    height: 0.5rem;
+    width: $size;
+    height: $size;
+    line-height: $size;
     text-align: center;
+    vertical-align:middle;
     color: white;
   }
 }
