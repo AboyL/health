@@ -2,11 +2,11 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:46
  * @Last Modified by: L
- * @Last Modified time: 2018-04-21 16:36:12
+ * @Last Modified time: 2018-04-22 10:39:42
  */
 <template>
   <div class="container">
-    <Header
+    <Header class="header"
     :hasHeaderLeft=false
     :title="'登录'"
     ></Header>
@@ -115,5 +115,11 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-
+.container{
+  // background-image: url(../../assets/login.gif);
+  height: 100%;
+  .header{
+    margin-bottom: 1.5rem;
+  }
+}
 </style>

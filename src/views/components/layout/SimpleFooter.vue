@@ -5,26 +5,22 @@
  * @Last Modified time: 2018-04-21 15:54:25
  */
 <template>
-<div>
+  <div>
     <div class="footer">
-      <router-link
-        v-for="(item,index) in footerList"
-        :key='item.type+index'
-        :to="{ name: item.linkTo}"
-        v-if="item.type==='link'"
-      >
+      <router-link v-for="(item,index) in footerList"
+                   :key='item.type+index'
+                   :to="{ name: item.linkTo}"
+                   v-if="item.type==='link'">
         <span>{{item.text}}</span>
       </router-link>
-      <span
-        v-for="(item,index) in footerList"
-        v-if="item.type==='button'"
-        @click="item.cb"
-        :key='item.type+index'
-        >
+      <span v-for="(item,index) in footerList"
+            v-if="item.type==='button'"
+            @click="item.cb"
+            :key='item.type+index'>
         {{item.text}}
       </span>
     </div>
-</div>
+  </div>
 </template>
 <script>
 export default {
@@ -43,8 +39,8 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-@import "~style/variable.scss";
-@import "~style/mixin.scss";
+@import '~style/variable.scss';
+@import '~style/mixin.scss';
 
 .footer {
   position: absolute;
