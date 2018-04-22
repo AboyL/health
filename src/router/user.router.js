@@ -4,7 +4,7 @@ import ForgetPass from 'views/user/ForgetPass'
 
 export default [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login
   },

@@ -1,25 +1,26 @@
 /*
  * @Author: L
  * @Date: 2018-04-21 15:54:14
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-21 15:54:14
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-22 10:00:07
  */
 <template>
-<div class="header">
+  <div class="header">
     <div class="header-left"
-        v-if="hasHeaderLeft"
-        @click="back">
-      <svg class="icon" aria-hidden="true">
+         v-if="hasHeaderLeft"
+         @click="back">
+      <svg class="icon"
+           aria-hidden="true">
         <use xlink:href="#h-icon-back"></use>
       </svg>
     </div>
     <div class="title">
-        {{title}}
+      {{title}}
     </div>
     <div class="header-right">
 
     </div>
-</div>
+  </div>
 </template>
 <script>
 export default {
@@ -47,8 +48,11 @@ export default {
 
 .header {
   position: relative;
-  background: linear-gradient(#8cf3d2, #8cf39c, #00ff70);
+  // background: linear-gradient(#8cf3d2, #8cf39c, #00ff70);
+  background: linear-gradient(#3399cc,rgba(3, 166, 228, .7));
+  // background: rgba(3, 166, 228, 1);
   color: $fontColor;
+  color: white;
   border-bottom: 1px solid $border-color;
   @include hf-height-lineHeight;
   .header-left {

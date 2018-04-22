@@ -1,18 +1,14 @@
 <template>
   <div class="tab-user">
-    <Header :hasHeaderLeft=false
-            :title="'个人信息'"></Header>
     <LabelList :LabelList="LabelList"></LabelList>
   </div>
 </template>
 <script>
-import Header from 'components/layout/Header.vue'
 import LabelList from 'components/layout/LabelList.vue'
 
 export default {
   name: 'TabUser',
   components: {
-    Header,
     LabelList
   },
   data () {

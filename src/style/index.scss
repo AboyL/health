@@ -14,8 +14,11 @@
 }
 
 .el-tabs{
-    height: 100% !important;
-    position: relative !important;
+    position: absolute !important;
+    bottom: 0;
+    top: $headerHeight;
+    left: 0;
+    right: 0;
     .el-tabs__content{
         overflow: hidden !important;
         position: absolute !important;

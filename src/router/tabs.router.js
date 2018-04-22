@@ -2,7 +2,7 @@ import Tabs from 'views/Tabs/Tabs'
 
 export default [
   {
-    path: '/tabs',
+    path: '/',
     name: 'Tabs',
     component: Tabs
   }

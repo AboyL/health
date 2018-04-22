@@ -16,6 +16,6 @@
 }
 
 @mixin hf-height-lineHeight{
-    height: .8rem;
-    line-height: .8rem;
+    height: $headerHeight;
+    line-height: $headerHeight;
 }
