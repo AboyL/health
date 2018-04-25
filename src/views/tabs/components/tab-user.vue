@@ -19,12 +19,6 @@ export default {
           content: 'L'
         },
         {
-          label: '我的病历'
-        },
-        {
-          label: '我的咨询'
-        },
-        {
           label: '修改密码'
         },
         {

@@ -1,24 +1,24 @@
 <template>
   <div class="tab-home">
-    <HospitalCascader class="cascader"></HospitalCascader>
+    <SubjectCascader class="cascader"></SubjectCascader>
     <DotItemList :itemList="itemList"></DotItemList>
   </div>
 </template>
 <script>
-import HospitalCascader from 'components/cascader/HospitalCascader.vue'
+import SubjectCascader from 'components/cascader/SubjectCascader.vue'
 import DotItemList from 'components/layout/DotItemList.vue'
 
 export default {
   name: 'TabUser',
   components: {
-    HospitalCascader,
+    SubjectCascader,
     DotItemList
   },
   data () {
     return {
       itemList: [
         {
-          key: 'hospital_registration',
+          key: 'subject_registration',
           content: '挂号'
         },
         {

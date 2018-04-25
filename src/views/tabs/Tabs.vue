@@ -60,9 +60,9 @@ export default {
   },
   mounted () {
     // 加载医院数据
-    tabsService.getHospitals().then((res) => {
+    tabsService.getSubjects().then((res) => {
       console.log(res)
-      this.$store.commit('setHospitals', res)
+      this.$store.commit('setSubjects', res)
     })
   }
 }

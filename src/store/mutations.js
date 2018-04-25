@@ -1,9 +1,9 @@
 export default {
-  changeHospital (state, hospital) {
-    console.log(hospital)
-    state.hospital = hospital
+  changeSubject (state, subject) {
+    console.log(subject)
+    state.subject = subject
   },
-  setHospitals (state, hospitals) {
-    state.hospitals = hospitals
+  setSubjects (state, subjects) {
+    state.subjects = subjects
   }
 }

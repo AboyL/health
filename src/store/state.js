@@ -1,4 +1,4 @@
 export default {
-  hospitals: [],
-  hospital: []
+  subjects: [],
+  subject: []
 }
