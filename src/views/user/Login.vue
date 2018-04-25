@@ -2,18 +2,18 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:46
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 15:21:18
+ * @Last Modified time: 2018-04-25 20:13:53
  */
 <template>
   <div class="container">
-    <Header class="header"
+    <header class="header"
             :hasHeaderLeft=false
-            :title="'登录'"></Header>
-    <SingleLineContainer :singleLineList="singleLineList"
+            :title="'登录'"></header>
+    <single-line-container :singleLineList="singleLineList"
                          :buttonContent="buttonContent"
                          @submit="submit">
-    </SingleLineContainer>
-    <SimpleFooter :footerList="footerList"></SimpleFooter>
+    </single-line-container>
+    <simple-footer :footerList="footerList"></simple-footer>
   </div>
 
 </template>

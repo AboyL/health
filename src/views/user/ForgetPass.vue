@@ -2,20 +2,20 @@
  * @Author: L
  * @Date: 2018-04-21 15:54:39
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 15:18:42
+ * @Last Modified time: 2018-04-25 20:13:18
  */
 <template>
   <div class="container">
-    <Header :title="'找回密码'"></Header>
-      <SingleLineContainer
+    <header :title="'找回密码'"></header>
+      <single-line-container
       :singleLineList="singleLineList"
       :buttonContent="buttonContent"
       @submit="submit"
-    ></SingleLineContainer>
-    <SimpleFooter
+    ></single-line-container>
+    <simple-footer
     v-if="step!==0"
     :footerList="footerList"
-    ></SimpleFooter>
+    ></simple-footer>
   </div>
 </template>
 <script>

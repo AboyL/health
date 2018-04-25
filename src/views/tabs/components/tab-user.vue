@@ -1,6 +1,6 @@
 <template>
   <div class="tab-user">
-    <LabelList :LabelList="LabelList"></LabelList>
+    <label-list :LabelList="LabelList"></label-list>
   </div>
 </template>
 <script>

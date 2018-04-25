@@ -1,7 +1,7 @@
 <template>
   <div class="tab-home">
-    <SubjectCascader class="cascader"></SubjectCascader>
-    <DotItemList :itemList="itemList"></DotItemList>
+    <subject-cascader class="cascader"></subject-cascader>
+    <dot-item-list :itemList="itemList"></dot-item-list>
   </div>
 </template>
 <script>
