@@ -2,13 +2,13 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:46
  * @Last Modified by: L
- * @Last Modified time: 2018-04-25 20:13:53
+ * @Last Modified time: 2018-04-25 20:50:34
  */
 <template>
   <div class="container">
-    <header class="header"
+    <Header class="header"
             :hasHeaderLeft=false
-            :title="'登录'"></header>
+            :title="'登录'"></Header>
     <single-line-container :singleLineList="singleLineList"
                          :buttonContent="buttonContent"
                          @submit="submit">

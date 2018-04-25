@@ -2,11 +2,11 @@
  * @Author: L
  * @Date: 2018-04-21 15:54:39
  * @Last Modified by: L
- * @Last Modified time: 2018-04-25 20:13:18
+ * @Last Modified time: 2018-04-25 20:49:59
  */
 <template>
   <div class="container">
-    <header :title="'找回密码'"></header>
+    <Header :title="'找回密码'"></Header>
       <single-line-container
       :singleLineList="singleLineList"
       :buttonContent="buttonContent"

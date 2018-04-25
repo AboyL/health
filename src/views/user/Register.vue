@@ -2,11 +2,11 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:19
  * @Last Modified by: L
- * @Last Modified time: 2018-04-25 20:14:19
+ * @Last Modified time: 2018-04-25 20:50:41
  */
 <template>
   <div class="container">
-    <header :title="'注册'"></header>
+    <Header :title="'注册'"></Header>
     <single-line-container
       :singleLineList="singleLineList"
       :buttonContent="buttonContent"

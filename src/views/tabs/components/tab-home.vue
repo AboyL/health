@@ -7,6 +7,7 @@
 <script>
 import SubjectCascader from 'components/cascader/SubjectCascader.vue'
 import DotItemList from 'components/layout/DotItemList.vue'
+import util from 'util'
 
 export default {
   name: 'TabUser',
@@ -15,11 +16,13 @@ export default {
     DotItemList
   },
   data () {
+    // var _this = this
     return {
       itemList: [
         {
           key: 'subject_registration',
-          content: '挂号'
+          content: '挂号',
+          cb: this.goSubjectRegistration
         },
         {
           key: 'my_advisory',
@@ -30,6 +33,17 @@ export default {
           content: '我的病历'
         }
       ]
+    }
+  },
+  methods: {
+    goSubjectRegistration: function () {
+      if (this.$store.state.subject.length === 2) {
+        this.$router.push({name: 'SubjectRegistration'})
+      } else {
+        util.warningMessage({
+          message: '请选择要就诊的科室'
+        })
+      }
     }
   }
 }

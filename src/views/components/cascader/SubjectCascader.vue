@@ -28,6 +28,9 @@ export default {
       console.log(this.$store.state.subject)
       console.log(this.$data.subject)
     }
+  },
+  mounted: function () {
+    this.subject = this.$store.state.subject
   }
 }
 </script>
