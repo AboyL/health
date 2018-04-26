@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-25 23:32:03
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-25 23:32:03
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-26 21:19:13
  */
 <template>
   <div class="tab-user">
@@ -11,6 +11,7 @@
 </template>
 <script>
 import LabelList from 'components/layout/LabelList.vue'
+import util from 'util'
 
 export default {
   name: 'TabUser',
@@ -28,9 +29,16 @@ export default {
           label: '修改密码'
         },
         {
-          label: '退出登录'
+          label: '退出登录',
+          cb: this.loginOut
         }
       ]
+    }
+  },
+  methods: {
+    loginOut () {
+      console.log('退出登录')
+      util.loginOut()
     }
   }
 }

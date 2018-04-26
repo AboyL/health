@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:53:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-21 16:35:17
+ * @Last Modified time: 2018-04-26 21:22:19
  */
 
 import axios from 'axios'
@@ -28,15 +28,17 @@ export default{
         loadingInstance.close()
       })
   },
-  warningMessage ({message}) {
+  warningMessage ({message, duration = 1000}) {
     Message({
       message,
+      duration,
       type: 'warning'
     })
   },
-  successMessage ({message, onClose = () => {}}) {
+  successMessage ({message, onClose = () => {}}, duration = 1000) {
     Message({
       message,
+      duration,
       type: 'success',
       onClose
     })
@@ -46,6 +48,10 @@ export default{
   },
   goTabs () {
     router.push({name: 'Tabs'})
+  },
+  loginOut () {
+    localStorage.token = ''
+    this.goLogin()
   }
 
 }

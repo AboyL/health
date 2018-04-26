@@ -1,15 +1,15 @@
 /*
  * @Author: L
  * @Date: 2018-04-25 23:31:34
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-25 23:31:34
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-26 21:17:35
  */
 <template>
 <div>
   <div class="item"
   v-for="(item,index) of LabelList"
   :key="index"
-  @click="item.cb?item.cb:()=>{}"
+  @click="item.cb?item.cb():()=>{}"
   >
     <div class="label">
       {{item.label}}

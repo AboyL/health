@@ -9,7 +9,10 @@ Mock.mock(`${baseUrl}user/login`, (url) => {
   if (data.username === 'L' && data.password === '123') {
     result = {
       status: 1,
-      msg: '登录成功'
+      msg: '登录成功',
+      data: {
+        token: 'zzz'
+      }
     }
   } else {
     result = {
