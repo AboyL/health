@@ -2,24 +2,34 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 17:11:01
+ * @Last Modified time: 2018-04-26 18:40:41
  */
 <template>
   <div class="tab-doctor">
     <subject-cascader></subject-cascader>
-    <component :is="type"></component>
+    <doctor-list v-if="type==='DoctorList'"
+                 :list="doctorList"></doctor-list>
+    <empty v-if="type==='Empty'"></empty>
   </div>
 </template>
 <script>
 import SubjectCascader from 'components/cascader/SubjectCascader.vue'
 import Empty from 'components/layout/Empty.vue'
 import DoctorList from 'components/doctor/DoctorList.vue'
+
+import hospitalService from 'service/hospital.service.js'
+
 export default {
   name: 'TabDoctor',
   components: {
     SubjectCascader,
     Empty,
     DoctorList
+  },
+  data () {
+    return {
+      doctorList: []
+    }
   },
   computed: {
     alreadyChooseSuject: function () {
@@ -28,6 +38,25 @@ export default {
     type: function () {
       console.log('type')
       return this.alreadyChooseSuject ? 'DoctorList' : 'Empty'
+    }
+  },
+  mounted () {
+    if (this.alreadyChooseSuject) {
+      hospitalService.getDoctors(this.$store.state.subject)
+        .then((res) => {
+          console.log(res)
+          this.doctorList = res
+        })
+    }
+  },
+  watch: {
+    alreadyChooseSuject () {
+      console.log('object')
+      hospitalService.getDoctors(this.$store.state.subject)
+        .then((res) => {
+          console.log(res)
+          this.doctorList = res
+        })
     }
   }
 }

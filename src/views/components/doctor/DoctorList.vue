@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <doctor-item></doctor-item>
+    <doctor-item v-for="item of list"
+                 :key="item.id"
+                 :item="item">
+    </doctor-item>
   </div>
 </template>
 <script>
@@ -9,6 +12,9 @@ export default {
   name: 'DoctorList',
   components: {
     DoctorItem
+  },
+  props: {
+    list: Array
   }
 }
 </script>

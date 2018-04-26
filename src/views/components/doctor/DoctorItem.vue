@@ -1,11 +1,13 @@
 <template>
   <div class="doctor-item">
-    <div class="head-portrait"></div>
+    <div class="head-portrait"
+         :class="{man:item.sex===1}"></div>
     <div class="content">
-      <div class="name item">哈哈哈</div>
-      <div class="position item">主治医生</div>
-      <div class="introduce item">擅长看病</div>
-      <div class="state">有号</div>
+      <div class="name item">{{item.name}}</div>
+      <div class="position item">{{item.position}}</div>
+      <div class="introduce item">{{item.introduce}}</div>
+      <div class="state"
+           :class="{has:item.state}">{{state}}</div>
     </div>
   </div>
 </template>
@@ -13,44 +15,62 @@
 export default {
   name: 'DoctorItem',
   props: {
-    detail: Object
+    item: Object
+  },
+  computed: {
+    state () {
+      let state = '无号'
+      if (this.item.state) {
+        state = '有号'
+      }
+      return state
+    }
   }
 }
 </script>
 <style scoped lang='scss'>
+@import "~style/variable.scss";
+
 .doctor-item {
   $height: 1.5rem;
   width: 100%;
   height: $height;
   background: white;
+  border-bottom: 1px solid $border-color;
   display: flex;
   .head-portrait {
     width: $height;
     height: $height;
-    background: url(~assets/doctor_man.jpg);
     background-size: $height;
+    background-image: url(~assets/doctor_woman.jpg);
+    &.man {
+      background-image: url(~assets/doctor_man.jpg);
+    }
   }
   .content {
     position: relative;
     flex-grow: 1;
     height: $height;
     box-sizing: border-box;
-    padding: .2px;
-    padding-top: .1px;
+    padding: 0.2px;
+    padding-top: 0.1px;
     vertical-align: top;
     .name {
       font-weight: bold;
     }
     .item {
-      margin: .1rem;
+      margin: 0.1rem;
     }
     .state {
       position: absolute;
-      padding: .1rem;
+      padding: 0.1rem;
       top: 3px;
-      right: .2px;
-      background: green;
+      right: 0.2px;
+      background: black;
       color: white;
+      &.has {
+        background: green;
+      }
     }
   }
 }
