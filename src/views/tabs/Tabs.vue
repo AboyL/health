@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 20:00:11
+ * @Last Modified time: 2018-04-26 20:41:37
  */
 <template>
   <div class="container">
@@ -57,14 +57,12 @@ export default {
   },
   methods: {
     changeTab: function (item) {
-      console.log(item)
       this.headerTitleIndex = item.index - 0
     }
   },
   mounted () {
     // 加载医院数据
     hospitalService.getSubjects().then((res) => {
-      console.log(res)
       this.$store.commit('setSubjects', res)
     })
   }
