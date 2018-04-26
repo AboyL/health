@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-25 23:31:51
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-25 23:31:51
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-26 17:11:01
  */
 <template>
   <div class="tab-doctor">
@@ -13,11 +13,13 @@
 <script>
 import SubjectCascader from 'components/cascader/SubjectCascader.vue'
 import Empty from 'components/layout/Empty.vue'
+import DoctorList from 'components/doctor/DoctorList.vue'
 export default {
   name: 'TabDoctor',
   components: {
     SubjectCascader,
-    Empty
+    Empty,
+    DoctorList
   },
   computed: {
     alreadyChooseSuject: function () {
@@ -25,7 +27,7 @@ export default {
     },
     type: function () {
       console.log('type')
-      return this.alreadyChooseSuject ? 'div' : 'Empty'
+      return this.alreadyChooseSuject ? 'DoctorList' : 'Empty'
     }
   }
 }
