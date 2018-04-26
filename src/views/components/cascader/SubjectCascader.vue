@@ -1,3 +1,9 @@
+/*
+ * @Author: L
+ * @Date: 2018-04-25 23:31:06
+ * @Last Modified by:   L
+ * @Last Modified time: 2018-04-25 23:31:06
+ */
 <template>
   <div>
     <el-cascader :options="subjects"
@@ -11,26 +17,23 @@
 <script>
 export default {
   name: 'SubjectCascader',
-  data () {
-    return {
-      subject: []
-    }
-  },
   computed: {
+    subject: {
+      get () {
+        return this.$store.state.subject
+      },
+      set (val) {
+        this.$store.commit('changeSubject', val)
+      }
+    },
     subjects () {
-      console.log(this.$store.state.subjects.length)
       return this.$store.state.subjects
     }
   },
   methods: {
     change (val) {
       this.$store.commit('changeSubject', val)
-      console.log(this.$store.state.subject)
-      console.log(this.$data.subject)
     }
-  },
-  mounted: function () {
-    this.subject = this.$store.state.subject
   }
 }
 </script>

@@ -1,3 +1,9 @@
+/*
+ * @Author: L
+ * @Date: 2018-04-25 23:31:45
+ * @Last Modified by:   L
+ * @Last Modified time: 2018-04-25 23:31:45
+ */
 <template>
 <div class="container">
     <Header :title="'挂号'"></Header>

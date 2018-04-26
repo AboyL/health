@@ -1,3 +1,9 @@
+/*
+ * @Author: L
+ * @Date: 2018-04-25 23:31:21
+ * @Last Modified by:   L
+ * @Last Modified time: 2018-04-25 23:31:21
+ */
 <template>
   <div class="list">
     <div class="item"

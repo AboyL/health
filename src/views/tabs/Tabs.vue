@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-22 20:12:33
+ * @Last Modified time: 2018-04-25 22:47:10
  */
 <template>
   <div class="container">
@@ -12,14 +12,15 @@
              class="tabs">
       <el-tab-pane label="首页"
                    @tab-click="changeTab(0)">
-        <TabHome></TabHome>
+        <tab-home></tab-home>
       </el-tab-pane>
       <el-tab-pane label="名医"
                    @tab-click="changeTab(1)">
-        >名医</el-tab-pane>
+        <tab-doctor></tab-doctor>
+      </el-tab-pane>
       <el-tab-pane label="个人"
                    @tab-click="changeTab(2)">
-        <TabUser></TabUser>
+        <tab-user></tab-user>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -27,6 +28,8 @@
 <script>
 import TabUser from './components/tab-user'
 import TabHome from './components/tab-home'
+import TabDoctor from './components/tab-doctor'
+
 import Header from 'components/layout/Header.vue'
 
 import tabsService from './Tabs.service.js'
@@ -35,6 +38,7 @@ export default {
   components: {
     TabUser,
     TabHome,
+    TabDoctor,
     Header
   },
   data () {

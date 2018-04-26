@@ -1,3 +1,9 @@
+/*
+ * @Author: L
+ * @Date: 2018-04-25 23:31:54
+ * @Last Modified by:   L
+ * @Last Modified time: 2018-04-25 23:31:54
+ */
 <template>
   <div class="tab-home">
     <subject-cascader class="cascader"></subject-cascader>
@@ -37,7 +43,7 @@ export default {
   },
   methods: {
     goSubjectRegistration: function () {
-      if (this.$store.state.subject.length === 2) {
+      if (this.$store.state.subject.length >= 2) {
         this.$router.push({name: 'SubjectRegistration'})
       } else {
         util.warningMessage({
