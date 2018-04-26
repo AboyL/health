@@ -2,24 +2,22 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 17:55:59
+ * @Last Modified time: 2018-04-26 20:00:11
  */
 <template>
   <div class="container">
     <Header :hasHeaderLeft=false
             :title="headerTitle"></Header>
     <el-tabs :tab-position="'bottom'"
-             class="tabs">
-      <el-tab-pane label="首页"
-                   @tab-click="changeTab(0)">
+             class="tabs"
+             @tab-click="changeTab">
+      <el-tab-pane label="首页">
         <tab-home></tab-home>
       </el-tab-pane>
-      <el-tab-pane label="名医"
-                   @tab-click="changeTab(1)">
+      <el-tab-pane label="名医">
         <tab-doctor></tab-doctor>
       </el-tab-pane>
-      <el-tab-pane label="个人"
-                   @tab-click="changeTab(2)">
+      <el-tab-pane label="个人">
         <tab-user></tab-user>
       </el-tab-pane>
     </el-tabs>
@@ -58,8 +56,9 @@ export default {
     }
   },
   methods: {
-    changeTab: function (index) {
-      this.headerTitleIndex = index
+    changeTab: function (item) {
+      console.log(item)
+      this.headerTitleIndex = item.index - 0
     }
   },
   mounted () {
