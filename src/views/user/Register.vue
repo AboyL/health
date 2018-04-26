@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:19
  * @Last Modified by: L
- * @Last Modified time: 2018-04-25 20:50:41
+ * @Last Modified time: 2018-04-26 17:08:19
  */
 <template>
   <div class="container">
@@ -18,7 +18,7 @@
 import Header from 'components/layout/Header.vue'
 import SingleLineContainer from 'components/layout/SingleLineContainer.vue'
 
-import loginService from './login.service'
+import loginService from 'service/login.service'
 import util from 'util'
 
 export default {

@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:54:39
  * @Last Modified by: L
- * @Last Modified time: 2018-04-25 20:49:59
+ * @Last Modified time: 2018-04-26 17:08:28
  */
 <template>
   <div class="container">
@@ -24,7 +24,7 @@ import SingleLineContainer from 'components/layout/SingleLineContainer.vue'
 import SimpleFooter from 'components/layout/SimpleFooter.vue'
 
 import util from 'util'
-import loginService from './login.service'
+import loginService from 'service/login.service'
 let step0SingleLineList = () => {
   return [
     {

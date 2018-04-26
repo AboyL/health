@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-25 22:47:10
+ * @Last Modified time: 2018-04-26 17:08:39
  */
 <template>
   <div class="container">
@@ -32,7 +32,7 @@ import TabDoctor from './components/tab-doctor'
 
 import Header from 'components/layout/Header.vue'
 
-import tabsService from './Tabs.service.js'
+import tabsService from 'service/Tabs.service.js'
 export default {
   name: 'Tabs',
   components: {
