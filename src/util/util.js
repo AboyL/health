@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:53:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 21:22:19
+ * @Last Modified time: 2018-04-27 10:59:30
  */
 
 import axios from 'axios'
@@ -44,13 +44,13 @@ export default{
     })
   },
   goLogin () {
+    localStorage.token = ''
     router.push({name: 'Login'})
   },
   goTabs () {
     router.push({name: 'Tabs'})
   },
   loginOut () {
-    localStorage.token = ''
     this.goLogin()
   }
 

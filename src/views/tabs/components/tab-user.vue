@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:32:03
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 21:19:13
+ * @Last Modified time: 2018-04-27 10:31:58
  */
 <template>
   <div class="tab-user">
@@ -26,7 +26,8 @@ export default {
           content: 'L'
         },
         {
-          label: '修改密码'
+          label: '修改密码',
+          cb: this.changePass
         },
         {
           label: '退出登录',
@@ -39,6 +40,9 @@ export default {
     loginOut () {
       console.log('退出登录')
       util.loginOut()
+    },
+    changePass () {
+      this.$router.push({name: 'ChangePass'})
     }
   }
 }
