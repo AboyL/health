@@ -34,8 +34,8 @@ export default {
     }
   },
   methods: {
-    clickDoctor (doctorId) {
-      this.$emit('click-doctor', doctorId)
+    clickDoctor (data) {
+      this.$emit('click-doctor', data)
     },
     getDoctors () {
       if (this.alreadyChooseSuject) {

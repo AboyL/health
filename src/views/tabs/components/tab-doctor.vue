@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-30 16:26:20
+ * @Last Modified time: 2018-04-30 16:52:32
  */
 <template>
   <div class="tab-doctor">
@@ -39,12 +39,13 @@ export default {
       showCounsel: false,
       doctorId: '',
       listConfig: {
+        type: 'counsel',
         operateContent: '咨询医生'
       }
     }
   },
   methods: {
-    clickDoctor (doctorId) {
+    clickDoctor (data) {
       this.showCounsel = true
     },
     cancel () {

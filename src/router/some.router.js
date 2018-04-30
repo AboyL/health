@@ -1,9 +1,9 @@
-import SubjectRegistration from 'views/SubjectRegistration/SubjectRegistration'
+import HospitalRegistration from 'views/hospital/HospitalRegistration'
 
 export default [
   {
     path: '/subject_registration',
-    name: 'SubjectRegistration',
-    component: SubjectRegistration
+    name: 'HospitalRegistration',
+    component: HospitalRegistration
   }
 ]

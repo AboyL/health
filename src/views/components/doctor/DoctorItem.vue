@@ -11,7 +11,7 @@
            v-if="item.type==='registration'"
            :class="{has:item.state}">{{state}}
       </div>
-      <div class="operate box">{{item.operateContent}}</div>
+      <div class="operate box" v-if="item.type==='counsel'">{{item.operateContent}}</div>
     </div>
   </div>
 </template>
@@ -32,7 +32,10 @@ export default {
   },
   methods: {
     clickDoctor () {
-      this.$emit('click-doctor', this.item.id)
+      this.$emit('click-doctor', {
+        id: this.item.id,
+        state: this.item.state
+      })
     }
   }
 }

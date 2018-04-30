@@ -28,7 +28,7 @@ export default {
         {
           key: 'subject_registration',
           content: '挂号',
-          cb: this.goSubjectRegistration
+          cb: this.goHospitalRegistration
         },
         {
           key: 'my_advisory',
@@ -42,9 +42,9 @@ export default {
     }
   },
   methods: {
-    goSubjectRegistration: function () {
+    goHospitalRegistration: function () {
       if (this.$store.state.subject.length >= 2) {
-        this.$router.push({name: 'SubjectRegistration'})
+        this.$router.push({name: 'HospitalRegistration'})
       } else {
         util.warningMessage({
           message: '请选择要就诊的科室'
