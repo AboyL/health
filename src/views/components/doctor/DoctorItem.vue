@@ -1,13 +1,17 @@
 <template>
-  <div class="doctor-item">
+  <div class="doctor-item"
+       @click="clickDoctor">
     <div class="head-portrait"
          :class="{man:item.sex===1}"></div>
     <div class="content">
       <div class="name item">{{item.name}}</div>
       <div class="position item">{{item.position}}</div>
       <div class="introduce item">{{item.introduce}}</div>
-      <div class="state"
-           :class="{has:item.state}">{{state}}</div>
+      <div class="state box"
+           v-if="item.type==='registration'"
+           :class="{has:item.state}">{{state}}
+      </div>
+      <div class="operate box">{{item.operateContent}}</div>
     </div>
   </div>
 </template>
@@ -25,11 +29,16 @@ export default {
       }
       return state
     }
+  },
+  methods: {
+    clickDoctor () {
+      this.$emit('click-doctor', this.item.id)
+    }
   }
 }
 </script>
 <style scoped lang='scss'>
-@import "~style/variable.scss";
+@import '~style/variable.scss';
 
 .doctor-item {
   $height: 1.5rem;
@@ -61,16 +70,22 @@ export default {
     .item {
       margin: 0.1rem;
     }
-    .state {
+    .box {
       position: absolute;
       padding: 0.1rem;
-      top: 3px;
       right: 0.2px;
-      background: black;
       color: white;
+    }
+    .state {
+      top: 3px;
+      background: black;
       &.has {
         background: green;
       }
+    }
+    .operate {
+      top: 3px;
+      background: green;
     }
   }
 }

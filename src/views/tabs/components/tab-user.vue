@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:32:03
  * @Last Modified by: L
- * @Last Modified time: 2018-04-27 10:31:58
+ * @Last Modified time: 2018-04-30 16:25:43
  */
 <template>
   <div class="tab-user">
@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     loginOut () {
-      console.log('退出登录')
       util.loginOut()
     },
     changePass () {

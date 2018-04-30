@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-26 17:50:25
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 17:57:57
+ * @Last Modified time: 2018-04-30 16:18:50
  */
 
 import util from 'util'
@@ -19,6 +19,15 @@ export default {
     let reslut = await util.request(
       {
         url: 'hospital/getDoctors'
+      }
+    )
+    return reslut
+  },
+  async submitCounsel (data) {
+    let reslut = await util.request(
+      {
+        url: 'hospital/submitCounsel',
+        data: data
       }
     )
     return reslut

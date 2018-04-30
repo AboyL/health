@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 20:41:37
+ * @Last Modified time: 2018-04-30 16:11:05
  */
 <template>
   <div class="container">
@@ -31,6 +31,8 @@ import TabDoctor from './components/tab-doctor'
 import Header from 'components/layout/Header.vue'
 
 import hospitalService from 'service/hospital.service.js'
+import util from 'util'
+
 export default {
   name: 'Tabs',
   components: {
@@ -63,7 +65,13 @@ export default {
   mounted () {
     // 加载医院数据
     hospitalService.getSubjects().then((res) => {
-      this.$store.commit('setSubjects', res)
+      if (res.status) {
+        this.$store.commit('setSubjects', res.data)
+      } else {
+        util.warningMessage({
+          message: '加载失败'
+        })
+      }
     })
   }
 }

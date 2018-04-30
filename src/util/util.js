@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:53:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-28 21:54:58
+ * @Last Modified time: 2018-04-29 13:48:03
  */
 
 import axios from 'axios'
@@ -18,8 +18,8 @@ export default{
       url: url,
       method: method,
       data: data,
-      // baseURL: 'http://localhost:8080/api' //test
-      baseURL: 'http://localhost:2333/api' // prod
+      baseURL: 'http://localhost:8080/api' // test
+      // baseURL: 'http://localhost:2333/api' // prod
     })
       .then((result) => {
         return result.data

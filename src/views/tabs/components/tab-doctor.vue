@@ -2,12 +2,18 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 20:04:25
+ * @Last Modified time: 2018-04-30 16:26:20
  */
 <template>
   <div class="tab-doctor">
+    <doctor-counsel v-if="showCounsel"
+                    @cancel="cancel"
+                    @submit="submit"></doctor-counsel>
     <subject-cascader></subject-cascader>
-    <doctor-list v-if="type==='DoctorList'"></doctor-list>
+    <doctor-list v-if="type==='DoctorList'"
+                 :listConfig="listConfig"
+                 @click-doctor="clickDoctor">
+    </doctor-list>
     <empty v-if="type==='Empty'"></empty>
   </div>
 </template>
@@ -15,17 +21,51 @@
 import SubjectCascader from 'components/cascader/SubjectCascader.vue'
 import Empty from 'components/layout/Empty.vue'
 import DoctorList from 'components/doctor/DoctorList.vue'
+import DoctorCounsel from 'components/doctor/DoctorCounsel.vue'
+import hospitalService from 'service/hospital.service.js'
+import util from 'util'
 
 export default {
   name: 'TabDoctor',
   components: {
     SubjectCascader,
     Empty,
-    DoctorList
+    DoctorList,
+    DoctorCounsel
   },
   data () {
     return {
-      doctorList: []
+      doctorList: [],
+      showCounsel: false,
+      doctorId: '',
+      listConfig: {
+        operateContent: '咨询医生'
+      }
+    }
+  },
+  methods: {
+    clickDoctor (doctorId) {
+      this.showCounsel = true
+    },
+    cancel () {
+      this.showCounsel = false
+    },
+    submit (content) {
+      this.showCounsel = false
+      hospitalService.submitCounsel({
+        id: this.doctorId,
+        content: content
+      }).then((res) => {
+        if (res.status) {
+          util.successMessage({
+            message: '提交成功'
+          })
+        } else {
+          util.warningMessage({
+            message: '提交失败'
+          })
+        }
+      })
     }
   },
   computed: {
@@ -33,7 +73,6 @@ export default {
       return this.$store.state.subject.length >= 2
     },
     type: function () {
-      console.log('type')
       return this.alreadyChooseSuject ? 'DoctorList' : 'Empty'
     }
   }

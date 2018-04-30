@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:19
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 17:08:19
+ * @Last Modified time: 2018-04-30 16:26:41
  */
 <template>
   <div class="container">
@@ -76,7 +76,6 @@ export default {
               }
             })
           } else {
-            console.log(res.msg)
             util.warningMessage({
               message: res.msg
             })

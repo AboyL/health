@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-25 23:31:21
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-25 23:31:21
+ * @Last Modified by: L
+ * @Last Modified time: 2018-04-30 16:25:39
  */
 <template>
   <div class="list">
@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     test: function () {
-      console.log('test')
       this.itemList[0].cb()
     }
   }

@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:54:39
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 17:08:28
+ * @Last Modified time: 2018-04-30 16:26:31
  */
 <template>
   <div class="container">
@@ -192,8 +192,6 @@ export default {
         --this.step
         this.singleLineList = step1SingleLineList(this.primaryQuestion)
       }
-      console.log('previous')
-      console.log(this.step)
     }
   }
 }
