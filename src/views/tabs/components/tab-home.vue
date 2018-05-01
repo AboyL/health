@@ -1,8 +1,8 @@
 /*
  * @Author: L
  * @Date: 2018-04-25 23:31:54
- * @Last Modified by:   L
- * @Last Modified time: 2018-04-25 23:31:54
+ * @Last Modified by: L
+ * @Last Modified time: 2018-05-01 10:21:13
  */
 <template>
   <div class="tab-home">
@@ -32,7 +32,8 @@ export default {
         },
         {
           key: 'my_advisory',
-          content: '我的咨询'
+          content: '我的咨询',
+          cb: this.goCounsel
         },
         {
           key: 'medical_history',
@@ -42,7 +43,7 @@ export default {
     }
   },
   methods: {
-    goHospitalRegistration: function () {
+    goHospitalRegistration () {
       if (this.$store.state.subject.length >= 2) {
         this.$router.push({name: 'HospitalRegistration'})
       } else {
@@ -50,6 +51,9 @@ export default {
           message: '请选择要就诊的科室'
         })
       }
+    },
+    goCounsel () {
+      this.$router.push({name: 'HospitalCounsel'})
     }
   }
 }

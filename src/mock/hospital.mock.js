@@ -62,3 +62,25 @@ Mock.mock(`${baseUrl}hospital/submitCounsel`, (url) => {
   }
   return result
 })
+
+Mock.mock(`${baseUrl}hospital/getCounsel`, (url) => {
+  let result = {
+    status: 1,
+    msg: '提交成功',
+    data: {
+      list: [
+        {
+          id: '1',
+          question: '不要问国家为你做了什么',
+          answer: '而要问你为国家做了什么'
+        },
+        {
+          id: '2',
+          question: '不要问你为国家做了什么',
+          answer: '而要问国家为你做了什么'
+        }
+      ]
+    }
+  }
+  return result
+})
