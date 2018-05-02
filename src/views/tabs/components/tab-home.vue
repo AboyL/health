@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:54
  * @Last Modified by: L
- * @Last Modified time: 2018-05-01 10:21:13
+ * @Last Modified time: 2018-05-02 16:32:27
  */
 <template>
   <div class="tab-home">
@@ -37,7 +37,8 @@ export default {
         },
         {
           key: 'medical_history',
-          content: '我的病历'
+          content: '我的病历',
+          cb: this.goMedicalHistory
         }
       ]
     }
@@ -54,6 +55,9 @@ export default {
     },
     goCounsel () {
       this.$router.push({name: 'HospitalCounsel'})
+    },
+    goMedicalHistory () {
+      this.$router.push({name: 'hospitalMedicalHistory'})
     }
   }
 }

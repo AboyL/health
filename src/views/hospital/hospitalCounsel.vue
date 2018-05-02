@@ -3,8 +3,8 @@
     <Header class="header"
             :title="'我的咨询'">
     </Header>
-    <div class="list">
-      <div class="item"
+    <div class="card-list">
+      <div class="card-item"
            v-for="item in list"
            :key="item.id">
         <div class="question">
@@ -48,18 +48,5 @@ export default {
 </script>
 <style scoped lang='scss'>
 @import '~style/variable.scss';
-.list {
-  padding: 3px;
-  .item {
-    padding: 0.1rem;
-    border: 1px solid $border-color;
-    box-shadow: 0px 0px 3px 3px $border-color;
-    > div {
-      padding-top: 0.1rem;
-      > div {
-        margin: 0.1rem 0;
-      }
-    }
-  }
-}
+
 </style>

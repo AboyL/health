@@ -84,3 +84,33 @@ Mock.mock(`${baseUrl}hospital/getCounsel`, (url) => {
   }
   return result
 })
+
+Mock.mock(`${baseUrl}hospital/getMedicalHistory`, (url) => {
+  let result = {
+    status: 1,
+    data: {
+      list: [
+        {
+          id: '1',
+          time: '2017-12-28',
+          symptom: '发热',
+          result: '因发热导致咽喉炎',
+          recipe: [
+            [
+              {
+                value: '阿莫西林'
+              }, {
+                value: 3
+              }, {
+                value: '盒'
+              }, {
+                value: 3
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
+  return result
+})

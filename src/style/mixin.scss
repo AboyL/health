@@ -26,3 +26,6 @@
 @mixin gradual-background-cancal{
     background: linear-gradient(#fa0606fd, rgba(240, 41, 27, 0.541));    
 }
+@mixin gradual-background-card-item{
+    background: linear-gradient(rgba(114, 113, 113, 0.215), rgba(175, 173, 173, 0.137));    
+}
