@@ -2,23 +2,24 @@
  * @Author: L
  * @Date: 2018-04-26 17:50:25
  * @Last Modified by: L
- * @Last Modified time: 2018-05-02 23:31:30
+ * @Last Modified time: 2018-05-06 23:02:21
  */
 
 import util from 'util'
 export default {
-  async getSubjects () {
+  async getAllSubject () {
     let reslut = await util.request(
       {
-        url: 'hospital/getSubject'
+        url: 'hospital/getAllSubject'
       }
     )
     return reslut
   },
-  async getDoctors () {
+  async getDoctors (data) {
     let reslut = await util.request(
       {
-        url: 'hospital/getDoctors'
+        url: 'hospital/getDoctors',
+        data
       }
     )
     return reslut
@@ -27,23 +28,25 @@ export default {
     let reslut = await util.request(
       {
         url: 'hospital/submitCounsel',
-        data: data
+        data
       }
     )
     return reslut
   },
-  async getCounsel () {
+  async getCounsels (data) {
     let reslut = await util.request(
       {
-        url: 'hospital/getCounsel'
+        url: 'hospital/getCounsels',
+        data
       }
     )
     return reslut
   },
-  async getMedicalHistory () {
+  async getMedicalHistorys (data) {
     let reslut = await util.request(
       {
-        url: 'hospital/getMedicalHistory'
+        url: 'hospital/getMedicalHistorys',
+        data
       }
     )
     return reslut

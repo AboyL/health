@@ -33,7 +33,7 @@ export default {
   methods: {
     clickDoctor () {
       this.$emit('click-doctor', {
-        id: this.item.id,
+        id: this.item._id,
         state: this.item.state
       })
     }

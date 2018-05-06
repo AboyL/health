@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:51
  * @Last Modified by: L
- * @Last Modified time: 2018-04-30 16:52:32
+ * @Last Modified time: 2018-05-06 22:03:14
  */
 <template>
   <div class="tab-doctor">
@@ -47,6 +47,8 @@ export default {
   methods: {
     clickDoctor (data) {
       this.showCounsel = true
+      this.doctorId = data.id
+      console.log(data)
     },
     cancel () {
       this.showCounsel = false
@@ -54,8 +56,9 @@ export default {
     submit (content) {
       this.showCounsel = false
       hospitalService.submitCounsel({
-        id: this.doctorId,
-        content: content
+        doctorId: this.doctorId,
+        userId: this.$store.state.token,
+        question: content
       }).then((res) => {
         if (res.status) {
           util.successMessage({

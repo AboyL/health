@@ -39,7 +39,7 @@ export default {
     },
     getDoctors () {
       if (this.alreadyChooseSuject) {
-        hospitalService.getDoctors(this.$store.state.subject)
+        hospitalService.getDoctors({ subject: this.$store.state.subject })
           .then((res) => {
             if (res.status) {
               this.doctorList = res.data

@@ -8,7 +8,7 @@
            v-if="hospitalMedicalHistory.length>0"
            v-for="(item,index) in hospitalMedicalHistory"
            :key="index">
-        <div class="time">{{item.time}}</div>
+        <div class="time">{{item.createTime}}</div>
         <div>
           <div>症状:</div>
           <div>
@@ -24,7 +24,11 @@
         <div v-if="item.recipe.length>0">
           <div>处方</div>
           <row-item :row="recipeName"></row-item>
-          <row-item :row="recipe"
+          <row-item :row="{
+                    name:recipe.name,
+                    number:recipe.number,
+                    unit:recipe.unit,
+                    frequency:recipe.frequency}"
                     v-for="(recipe,index) in item.recipe"
                     :key="index">
           </row-item>
@@ -48,22 +52,19 @@ export default {
   },
   data () {
     return {
-      recipeName: [
-        {
-          value: '药名'
-        }, {
-          value: '数量'
-        }, {
-          value: '单位'
-        }, {
-          value: '次数/天'
-        }
-      ],
+      recipeName: {
+        name: '药名',
+        number: '数量',
+        unit: '单位',
+        frequency: '次/天'
+      },
       hospitalMedicalHistory: []
     }
   },
   mounted () {
-    HospitalService.getMedicalHistory().then(res => {
+    HospitalService.getMedicalHistorys({
+      userId: this.$store.state.token
+    }).then(res => {
       console.log(res)
       if (res.status) {
         this.hospitalMedicalHistory = res.data.list

@@ -7,6 +7,7 @@
       <div class="card-item"
            v-for="item in list"
            :key="item.id">
+        <div class="time">{{item.createTime}}</div>
         <div class="question">
           <h1>问题</h1>
           <div>
@@ -37,7 +38,9 @@ export default {
     }
   },
   mounted () {
-    HospitalService.getCounsel().then((res) => {
+    HospitalService.getCounsels({
+      userId: this.$store.state.token
+    }).then((res) => {
       console.log(res)
       if (res.status) {
         this.list = res.data.list
@@ -48,5 +51,4 @@ export default {
 </script>
 <style scoped lang='scss'>
 @import '~style/variable.scss';
-
 </style>

@@ -3,7 +3,7 @@ let baseUrl = 'http://localhost:8080/api/'
 Mock.setup({
   timeout: '200-1000' // 表示响应时间介于 200 和 600 毫秒之间，默认值是'10-100'。
 })
-Mock.mock(`${baseUrl}hospital/getSubject`, (url) => {
+Mock.mock(`${baseUrl}hospital/getAllSubject`, (url) => {
   let result = {
     status: 1,
     data: [{
@@ -63,7 +63,7 @@ Mock.mock(`${baseUrl}hospital/submitCounsel`, (url) => {
   return result
 })
 
-Mock.mock(`${baseUrl}hospital/getCounsel`, (url) => {
+Mock.mock(`${baseUrl}hospital/getCounsels`, (url) => {
   let result = {
     status: 1,
     msg: '提交成功',
@@ -85,7 +85,7 @@ Mock.mock(`${baseUrl}hospital/getCounsel`, (url) => {
   return result
 })
 
-Mock.mock(`${baseUrl}hospital/getMedicalHistory`, (url) => {
+Mock.mock(`${baseUrl}hospital/getMedicalHistorys`, (url) => {
   let result = {
     status: 1,
     data: {

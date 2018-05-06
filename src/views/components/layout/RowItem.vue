@@ -1,9 +1,9 @@
 <template>
   <div class="row">
     <div class="col"
-         v-for="(item,index) in row"
+         v-for="(value,index) in row"
          :key="index">
-         {{item.value}}
+         {{value}}
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   name: 'RowItem',
   props: {
-    row: Array
+    row: Object
   }
 }
 </script>

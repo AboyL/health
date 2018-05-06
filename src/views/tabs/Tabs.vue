@@ -64,7 +64,7 @@ export default {
   },
   mounted () {
     // 加载医院数据
-    hospitalService.getSubjects().then((res) => {
+    hospitalService.getAllSubject().then((res) => {
       if (res.status) {
         this.$store.commit('setSubjects', res.data)
       } else {
