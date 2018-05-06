@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:54:39
  * @Last Modified by: L
- * @Last Modified time: 2018-04-30 16:26:31
+ * @Last Modified time: 2018-05-06 11:50:49
  */
 <template>
   <div class="container">
@@ -81,7 +81,8 @@ export default {
         }
       ],
       singleLineList: step0SingleLineList(),
-      primaryQuestion: {}
+      primaryQuestion: {},
+      username: ''
     }
   },
   computed: {
@@ -143,7 +144,9 @@ export default {
       if (this.step === 0) {
         // 获取用户问题
         loginService.getQuestion(fromData).then(res => {
+          console.log(fromData)
           if (res.status) {
+            this.username = fromData.username
             ++this.step
             this.primaryQuestion = res
             this.singleLineList = step1SingleLineList(res)
@@ -155,6 +158,7 @@ export default {
         })
       } else if (this.step === 1) {
         // 检查答案
+        fromData.username = this.username
         loginService.checkAnswer(fromData).then(res => {
           if (res.status) {
             ++this.step
@@ -167,7 +171,9 @@ export default {
         })
       } else if (this.step === 2) {
         // 重置密码
+        fromData.username = this.username
         loginService.resetPassword(fromData).then(res => {
+          console.log(fromData)
           if (res.status) {
             util.successMessage({
               message: '重置密码成功',

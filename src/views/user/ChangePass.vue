@@ -50,6 +50,7 @@ export default {
   methods: {
     submit (fromData) {
       let validateResult = this.validate(fromData)
+      fromData._id = this.$store.state.token
       if (validateResult.status) {
         loginService.changePass(fromData).then(res => {
           if (res.status) {

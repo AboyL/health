@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:46
  * @Last Modified by: L
- * @Last Modified time: 2018-04-26 21:10:00
+ * @Last Modified time: 2018-05-06 11:14:29
  */
 <template>
   <div class="container">
@@ -68,11 +68,13 @@ export default {
       let validateResult = this.validate(fromData)
       if (validateResult.status) {
         loginService.login(fromData).then(res => {
+          console.log(res)
           if (res.status) {
             util.successMessage({
               message: res.msg,
               onClose: () => {
-                localStorage.token = res.data.token
+                this.$store.commit('setToken', res.data.token)
+                // localStorage.token = res.data.token
                 util.goTabs()
               }
             })
