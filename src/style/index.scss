@@ -3,23 +3,64 @@
 .container {
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(224, 240, 245, 0.7), #f4f6f7);  
+  background: linear-gradient(rgba(224, 240, 245, 0.7), #f4f6f7);
 }
-.has-bottom-border{
+
+.has-bottom-border {
   border-bottom: 1px solid $border-color;
 }
+
 .card-list {
   padding: 3px;
   .card-item {
     padding: 0.1rem;
-    margin: .15rem  0;
+    margin: .15rem 0;
     border: 1px solid $border-color;
     box-shadow: 0px 0px 1px 1px $border-color;
     @include gradual-background-card-item;
-    > div {
+    >div {
       padding-top: 0.1rem;
-      > div {
+      >div {
         margin: 0.1rem 0;
+      }
+    }
+  }
+}
+
+.wrapper {
+  // 设置外层遮罩
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(180, 179, 179, .3);
+  z-index: 999;
+  .box {
+    width: 5rem;
+    margin: 2rem auto;
+    background-color: white;
+    opacity: 1;
+    z-index: 1000;
+    .title {
+      padding: 10px;
+      text-align: center;
+      @include gradual-background;
+      color: white;
+    }
+    .operate-box {
+      display: flex;
+      >div {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+        color: white;
+      }
+      .cancel {
+        @include gradual-background-cancal;
+      }
+      .submit {
+        @include gradual-background;
       }
     }
   }

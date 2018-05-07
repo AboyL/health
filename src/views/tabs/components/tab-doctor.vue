@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:51
  * @Last Modified by: L
- * @Last Modified time: 2018-05-06 22:03:14
+ * @Last Modified time: 2018-05-07 12:15:42
  */
 <template>
   <div class="tab-doctor">
@@ -55,21 +55,23 @@ export default {
     },
     submit (content) {
       this.showCounsel = false
-      hospitalService.submitCounsel({
-        doctorId: this.doctorId,
-        userId: this.$store.state.token,
-        question: content
-      }).then((res) => {
-        if (res.status) {
-          util.successMessage({
-            message: '提交成功'
-          })
-        } else {
-          util.warningMessage({
-            message: '提交失败'
-          })
-        }
-      })
+      if (content) {
+        hospitalService.submitCounsel({
+          doctorId: this.doctorId,
+          userId: this.$store.state.token,
+          question: content
+        }).then((res) => {
+          if (res.status) {
+            util.successMessage({
+              message: '提交成功'
+            })
+          } else {
+            util.warningMessage({
+              message: '提交失败'
+            })
+          }
+        })
+      }
     }
   },
   computed: {
