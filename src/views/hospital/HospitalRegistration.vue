@@ -2,14 +2,21 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:45
  * @Last Modified by: L
- * @Last Modified time: 2018-05-07 23:32:45
+ * @Last Modified time: 2018-05-08 11:50:40
  */
 <template>
   <div class="container">
     <Header :title="'挂号'"></Header>
     <doctor-list :listConfig="listConfig"
-                 @click-doctor="registration">
+                 @click-doctor="registration"
+                 v-if="registrationData.number===-1">
     </doctor-list>
+    <div v-if="registrationData.number>-1" class="hasRegistrationData">
+      <div>已经挂号了</div>
+      <div>{{registrationData.time}}</div>
+      <div>{{registrationData.range}}</div>
+      <div>{{registrationData.number}}</div>
+    </div>
     <hospital-registration-sheet v-if="showHospitalRegistrationSheet"
                                  @submit='submit'
                                  @cancel='cancel'
@@ -43,6 +50,22 @@ export default {
       doctorId: ''
     }
   },
+  computed: {
+    registrationData: {
+      get () {
+        return {
+          number: this.$store.state.registerNumber,
+          time: this.$store.state.registerTime,
+          range: this.$store.state.registerRange
+        }
+      },
+      set (val) {
+        this.$store.commit('setRegisterNumber', this.number)
+        this.$store.commit('setRegisterTime', this.time)
+        this.$store.commit('setRegisterRange', this.range)
+      }
+    }
+  },
   methods: {
     registration (data) {
       console.log(data)
@@ -64,6 +87,14 @@ export default {
         userId: this.$store.state.token,
         doctorId: this.doctorId,
         index
+      }).then((res) => {
+        console.log(res)
+        if (res.status) {
+          this.showHospitalRegistrationSheet = false
+          this.$store.commit('setRegisterNumber', res.data.registration.number)
+          this.$store.commit('setRegisterTime', res.data.registration.time)
+          this.$store.commit('setRegisterRange', res.data.registration.range)
+        }
       })
       console.log('submit')
     },
@@ -74,5 +105,12 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-
+.hasRegistrationData{
+  >div{
+    padding: .2rem;
+    text-align: center;
+    height: .2rem;
+    line-height: .2rem;
+  }
+}
 </style>

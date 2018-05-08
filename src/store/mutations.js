@@ -6,6 +6,18 @@ export default {
   setSubjects (state, subjects) {
     state.subjects = subjects
   },
+  setRegisterNumber (state, registerNumber) {
+    localStorage.registerNumber = registerNumber
+    state.registerNumber = registerNumber
+  },
+  setRegisterTime (state, registerTime) {
+    localStorage.registerTime = registerTime
+    state.registerTime = registerTime
+  },
+  setRegisterRange (state, registerRange) {
+    localStorage.registerRange = registerRange
+    state.registerRange = registerRange
+  },
   setToken (state, token) {
     console.log('setToken')
     console.log(token)

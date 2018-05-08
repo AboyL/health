@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-05-07 11:35:43
  * @Last Modified by: L
- * @Last Modified time: 2018-05-07 23:30:19
+ * @Last Modified time: 2018-05-08 09:19:37
  */
 <template>
   <div class="wrapper">
@@ -60,6 +60,7 @@
 </template>
 <script>
 import HospitalService from 'service/hospital.service.js'
+import util from 'util'
 export default {
   name: 'HospitalRegistrationSheet',
   props: {
@@ -82,16 +83,37 @@ export default {
       this.$emit('cancel')
     },
     submit () {
-      this.$emit('submit', this.registrationIndex)
+      if (this.registrationIndex === -1) {
+        util.warningMessage({
+          message: '没有选择挂号时间'
+        })
+      } else {
+        this.$emit('submit', this.registrationIndex)
+      }
     },
     check (index) {
-      this.checkedList.forEach((data, index) => {
-        this.checkedList.splice(index, 1, false)
-      })
-      this.checkedList.splice(index, 1, true)
-      this.registrationIndex = index
-      console.log(index)
-      console.log(this.checkedList)
+      let canRegister = true
+      switch (index) {
+        case 0: canRegister = this.today.morning; break
+        case 1: canRegister = this.today.afternoon; break
+        case 2: canRegister = this.tomorrow.morning; break
+        case 3: canRegister = this.tomorrow.afternoon; break
+        case 4: canRegister = this.afterTomorrow.morning; break
+        case 5: canRegister = this.afterTomorrow.afternoon; break
+      }
+      if (!canRegister) {
+        util.warningMessage({
+          message: '所选时间挂号人数已达上限'
+        })
+      } else {
+        this.checkedList.forEach((data, index) => {
+          this.checkedList.splice(index, 1, false)
+        })
+        this.checkedList.splice(index, 1, true)
+        this.registrationIndex = index
+        console.log(index)
+        console.log(this.checkedList)
+      }
     }
   },
   mounted () {
@@ -146,7 +168,8 @@ export default {
         background: green;
       }
       &.checked {
-        border: 2px solid blue;
+        // border: 2px solid blue;
+        box-shadow: 0 0 2px 2px blue inset;
       }
     }
   }
