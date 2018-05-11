@@ -27,5 +27,9 @@ export default {
   clearToken (state) {
     localStorage.token = ''
     state.token = localStorage.token
+  },
+  setUsername (state, username) {
+    localStorage.username = username
+    state.username = localStorage.username
   }
 }

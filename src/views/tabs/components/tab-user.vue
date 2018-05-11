@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:32:03
  * @Last Modified by: L
- * @Last Modified time: 2018-04-30 16:25:43
+ * @Last Modified time: 2018-05-11 16:15:01
  */
 <template>
   <div class="tab-user">
@@ -23,7 +23,7 @@ export default {
       LabelList: [
         {
           label: '用户名',
-          content: 'L'
+          content: this.$store.state.username
         },
         {
           label: '修改密码',

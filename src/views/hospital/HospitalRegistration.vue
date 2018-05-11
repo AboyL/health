@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:45
  * @Last Modified by: L
- * @Last Modified time: 2018-05-08 11:50:40
+ * @Last Modified time: 2018-05-11 14:53:11
  */
 <template>
   <div class="container">
@@ -11,11 +11,14 @@
                  @click-doctor="registration"
                  v-if="registrationData.number===-1">
     </doctor-list>
-    <div v-if="registrationData.number>-1" class="hasRegistrationData">
-      <div>已经挂号了</div>
+    <div v-if="registrationData.number>-1"
+         class="hasRegistrationData">
+      <div>已挂号</div>
       <div>{{registrationData.time}}</div>
       <div>{{registrationData.range}}</div>
       <div>{{registrationData.number}}</div>
+      <div class="cancel">取消挂号
+      </div>
     </div>
     <hospital-registration-sheet v-if="showHospitalRegistrationSheet"
                                  @submit='submit'
@@ -105,12 +108,25 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-.hasRegistrationData{
-  >div{
-    padding: .2rem;
+.hasRegistrationData {
+  > div {
+    $line: 0.15rem;
+    padding: 0.2rem;
     text-align: center;
-    height: .2rem;
-    line-height: .2rem;
+    height: $line;
+    line-height: $line;
+    font-size: 0.3rem;
+    &.cancel {
+      display: block;
+      padding: .3rem;
+      margin: 0.3rem auto;
+      width: 3rem;
+      height: $line;
+      line-height: $line;
+      background: orange;
+      border-radius: 10%;
+      color: white;
+    }
   }
 }
 </style>

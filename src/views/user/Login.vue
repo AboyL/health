@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:55:46
  * @Last Modified by: L
- * @Last Modified time: 2018-05-06 11:14:29
+ * @Last Modified time: 2018-05-11 16:15:40
  */
 <template>
   <div class="container">
@@ -74,6 +74,7 @@ export default {
               message: res.msg,
               onClose: () => {
                 this.$store.commit('setToken', res.data.token)
+                this.$store.commit('setUsername', res.data.username)
                 // localStorage.token = res.data.token
                 util.goTabs()
               }

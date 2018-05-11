@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-26 21:10:12
  * @Last Modified by: L
- * @Last Modified time: 2018-05-08 11:22:47
+ * @Last Modified time: 2018-05-11 16:14:23
  */
 let token = ''
 if (localStorage.token) {
@@ -28,11 +28,18 @@ if (localStorage.registerRange) {
 } else {
   registerRange = ''
 }
+let username = ''
+if (localStorage.username) {
+  token = localStorage.username
+} else {
+  username = ''
+}
 export default {
   subjects: [],
   subject: [],
   token,
   registerNumber,
   registerTime,
-  registerRange
+  registerRange,
+  username
 }
