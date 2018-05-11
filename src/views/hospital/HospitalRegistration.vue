@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:45
  * @Last Modified by: L
- * @Last Modified time: 2018-05-11 14:53:11
+ * @Last Modified time: 2018-05-11 16:47:54
  */
 <template>
   <div class="container">
@@ -104,6 +104,10 @@ export default {
     cancel () {
       this.showHospitalRegistrationSheet = false
     }
+  },
+  mounted () {
+    console.log('state')
+    console.log(this.$store.state)
   }
 }
 </script>

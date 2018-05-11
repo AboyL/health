@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-26 21:10:12
  * @Last Modified by: L
- * @Last Modified time: 2018-05-11 16:14:23
+ * @Last Modified time: 2018-05-11 16:49:29
  */
 let token = ''
 if (localStorage.token) {
@@ -12,25 +12,25 @@ if (localStorage.token) {
 }
 let registerNumber = -1
 if (localStorage.registerNumber) {
-  token = localStorage.registerNumber
+  registerNumber = localStorage.registerNumber
 } else {
   registerNumber = -1
 }
 let registerTime = -1
 if (localStorage.registerTime) {
-  token = localStorage.registerTime
+  registerTime = localStorage.registerTime
 } else {
   registerTime = -1
 }
 let registerRange = ''
 if (localStorage.registerRange) {
-  token = localStorage.registerRange
+  registerRange = localStorage.registerRange
 } else {
   registerRange = ''
 }
 let username = ''
 if (localStorage.username) {
-  token = localStorage.username
+  username = localStorage.username
 } else {
   username = ''
 }
