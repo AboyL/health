@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-05-07 11:35:43
  * @Last Modified by: L
- * @Last Modified time: 2018-05-14 22:47:21
+ * @Last Modified time: 2018-05-14 23:14:02
  */
 <template>
   <div class="wrapper">
@@ -21,25 +21,25 @@
             {{today.morningTitle}}
           </div>
           <div class="time"
-               :class="{canRegister:tomorrow.morning,checked:checkedList[1]}"
-               @click="check(1)">
+               :class="{canRegister:tomorrow.morning,checked:checkedList[2]}"
+               @click="check(2)">
             {{tomorrow.afternoonTitle}}
           </div>
           <div class="time"
-               :class="{canRegister:afterTomorrow.morning,checked:checkedList[2]}"
-               @click="check(2)">
+               :class="{canRegister:afterTomorrow.morning,checked:checkedList[4]}"
+               @click="check(4)">
             {{afterTomorrow.morningTitle}}
           </div>
         </div>
         <div class="line afternoon">
           <div class="time"
-               :class="{canRegister:today.afternoon,checked:checkedList[3]}"
-               @click="check(3)">
+               :class="{canRegister:today.afternoon,checked:checkedList[1]}"
+               @click="check(1)">
             {{today.afternoonTitle}}
           </div>
           <div class="time"
-               :class="{canRegister:tomorrow.afternoon,checked:checkedList[4]}"
-               @click="check(4)">
+               :class="{canRegister:tomorrow.afternoon,checked:checkedList[3]}"
+               @click="check(3)">
             {{tomorrow.morningTitle}}
           </div>
           <div class="time"
@@ -96,10 +96,10 @@ export default {
       console.log(index)
       switch (index) {
         case 0: canRegister = this.today.morning; break
-        case 1: canRegister = this.tomorrow.morning; break
-        case 2: canRegister = this.afterTomorrow.morning; break
-        case 3: canRegister = this.today.afternoon; break
-        case 4: canRegister = this.tomorrow.afternoon; break
+        case 1: canRegister = this.today.afternoon; break
+        case 2: canRegister = this.tomorrow.morning; break
+        case 3: canRegister = this.tomorrow.afternoon; break
+        case 4: canRegister = this.afterTomorrow.morning; break
         case 5: canRegister = this.afterTomorrow.afternoon; break
       }
       if (!canRegister) {
