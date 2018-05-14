@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-05-07 11:35:43
  * @Last Modified by: L
- * @Last Modified time: 2018-05-08 09:19:37
+ * @Last Modified time: 2018-05-14 14:22:08
  */
 <template>
   <div class="wrapper">
@@ -122,7 +122,14 @@ export default {
     }).then((res) => {
       console.log(res)
       this.today = res.data.sheet.today
+      // 判断是否到了下午了
+      let nowTime = (new Date()).getHours()
+      let isAfternoon = (nowTime > 11)// 十一点以后就不能再进行预约了
       this.today.morningTitle = this.today.morning ? '点击预约' : '预约已满'
+      if (isAfternoon) {
+        this.today.morning = false
+        this.today.morningTitle = '不可预约'
+      }
       this.today.afternoonTitle = this.today.afternoon ? '点击预约' : '预约已满'
       this.tomorrow = res.data.sheet.tomorrow
       this.tomorrow.morningTitle = this.tomorrow.morning ? '点击预约' : '预约已满'
