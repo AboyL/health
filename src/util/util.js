@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:53:51
  * @Last Modified by: L
- * @Last Modified time: 2018-05-06 10:25:08
+ * @Last Modified time: 2018-05-14 00:23:17
  */
 
 import axios from 'axios'
@@ -53,6 +53,12 @@ export default {
   },
   loginOut () {
     this.goLogin()
+  },
+  getUserInfo (data) {
+    return this.request({
+      url: 'user/getUserInfo',
+      data: data
+    })
   }
 
 }

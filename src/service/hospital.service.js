@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-26 17:50:25
  * @Last Modified by: L
- * @Last Modified time: 2018-05-07 23:37:48
+ * @Last Modified time: 2018-05-14 10:53:21
  */
 
 import util from 'util'
@@ -19,6 +19,15 @@ export default {
     let reslut = await util.request(
       {
         url: 'hospital/getDoctors',
+        data
+      }
+    )
+    return reslut
+  },
+  async getADoctor (data) {
+    let reslut = await util.request(
+      {
+        url: 'hospital/getADoctor',
         data
       }
     )
@@ -64,6 +73,15 @@ export default {
     let reslut = await util.request(
       {
         url: 'hospital/submitRegistration',
+        data
+      }
+    )
+    return reslut
+  },
+  async clearRegistrationSheet (data) {
+    let reslut = await util.request(
+      {
+        url: 'hospital/clearRegistrationSheet',
         data
       }
     )

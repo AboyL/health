@@ -28,6 +28,11 @@ export default {
     localStorage.token = ''
     state.token = localStorage.token
   },
+  clearRegisterRange (state) {
+    this.setRegisterNumber(state, '')
+    this.setRegisterRange(state, -1)
+    this.setRegisterTime(state, -1)
+  },
   setUsername (state, username) {
     localStorage.username = username
     state.username = localStorage.username

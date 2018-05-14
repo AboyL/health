@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:45
  * @Last Modified by: L
- * @Last Modified time: 2018-05-11 16:47:54
+ * @Last Modified time: 2018-05-14 11:10:34
  */
 <template>
   <div class="container">
@@ -17,7 +17,10 @@
       <div>{{registrationData.time}}</div>
       <div>{{registrationData.range}}</div>
       <div>{{registrationData.number}}</div>
-      <div class="cancel">取消挂号
+      <div>{{registrationData.doctorName}}</div>
+      <div>{{registrationData.subjectName}}</div>
+      <div class="cancel"
+           @click="clearRegistrationSheet">取消挂号
       </div>
     </div>
     <hospital-registration-sheet v-if="showHospitalRegistrationSheet"
@@ -31,7 +34,6 @@
 import SingleLineContainer from 'components/layout/SingleLineContainer.vue'
 import Header from 'components/layout/Header.vue'
 import DoctorList from 'components/doctor/DoctorList.vue'
-
 import HospitalRegistrationSheet from './components/hospitalRegistrationSheet'
 
 import HospitalService from 'service/hospital.service.js'
@@ -50,22 +52,13 @@ export default {
         type: 'registration'
       },
       showHospitalRegistrationSheet: false,
-      doctorId: ''
-    }
-  },
-  computed: {
-    registrationData: {
-      get () {
-        return {
-          number: this.$store.state.registerNumber,
-          time: this.$store.state.registerTime,
-          range: this.$store.state.registerRange
-        }
-      },
-      set (val) {
-        this.$store.commit('setRegisterNumber', this.number)
-        this.$store.commit('setRegisterTime', this.time)
-        this.$store.commit('setRegisterRange', this.range)
+      doctorId: '',
+      registrationData: {
+        number: -1,
+        range: -1,
+        time: '',
+        doctorName: '',
+        subjectName: ''
       }
     }
   },
@@ -86,28 +79,68 @@ export default {
       this.showHospitalRegistrationSheet = !this.showHospitalRegistrationSheet
     },
     submit (index) {
+      let subject = this.$store.state.subject
       HospitalService.submitRegistration({
         userId: this.$store.state.token,
         doctorId: this.doctorId,
-        index
+        index,
+        subject
       }).then((res) => {
         console.log(res)
         if (res.status) {
-          this.showHospitalRegistrationSheet = false
-          this.$store.commit('setRegisterNumber', res.data.registration.number)
-          this.$store.commit('setRegisterTime', res.data.registration.time)
-          this.$store.commit('setRegisterRange', res.data.registration.range)
         }
       })
       console.log('submit')
     },
     cancel () {
       this.showHospitalRegistrationSheet = false
+    },
+    clearRegistrationSheet () {
+      console.log('取消挂号')
+      HospitalService.clearRegistrationSheet({
+        doctorId: this.doctorId,
+        userId: this.$store.state.token,
+        time: this.$store.state.registerTime,
+        range: this.$store.state.registerRange
+      }).then((res) => {
+        console.log(res)
+        if (res.status) {
+          this.setUserInfo()
+        }
+      })
+    },
+    async setUserInfo () {
+      // 获取用户信息
+      util.getUserInfo({
+        username: this.$store.state.username
+      }).then(async (res) => {
+        console.log(res)
+        if (res.data.userInfo.registerNumber) {
+          let userInfo = res.data.userInfo
+          this.showHospitalRegistrationSheet = false
+          this.registrationData.number = userInfo.registerNumber
+          this.registrationData.range = userInfo.registerRange
+          this.registrationData.time = userInfo.registerTime
+          let doctor = await HospitalService.getADoctor({ doctorId: userInfo.registerDoctorId })
+          this.registrationData.doctorName = doctor.data.name
+          this.$store.state.subjects.map((data1, index) => {
+            if (data1.value === userInfo.registerSubject[0]) {
+              this.registrationData.subjectName = data1.label
+              data1.children.map((data2, index2) => {
+                if (data2.value === userInfo.registerSubject[1]) {
+                  this.registrationData.subjectName = this.registrationData.subjectName + '/' + data2.label
+                }
+              })
+            }
+          })
+          console.log(this.$store.state.subjects)
+        }
+        console.log(this.registrationData.number)
+      })
     }
   },
   mounted () {
-    console.log('state')
-    console.log(this.$store.state)
+    this.setUserInfo()
   }
 }
 </script>
@@ -122,7 +155,7 @@ export default {
     font-size: 0.3rem;
     &.cancel {
       display: block;
-      padding: .3rem;
+      padding: 0.3rem;
       margin: 0.3rem auto;
       width: 3rem;
       height: $line;
