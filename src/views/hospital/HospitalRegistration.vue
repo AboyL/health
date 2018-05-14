@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:45
  * @Last Modified by: L
- * @Last Modified time: 2018-05-14 11:10:34
+ * @Last Modified time: 2018-05-14 12:17:16
  */
 <template>
   <div class="container">
@@ -58,6 +58,7 @@ export default {
         range: -1,
         time: '',
         doctorName: '',
+        doctorId: '',
         subjectName: ''
       }
     }
@@ -88,6 +89,7 @@ export default {
       }).then((res) => {
         console.log(res)
         if (res.status) {
+          this.setUserInfo()
         }
       })
       console.log('submit')
@@ -95,17 +97,28 @@ export default {
     cancel () {
       this.showHospitalRegistrationSheet = false
     },
+    clearRegistrationData () {
+      this.registrationData = {
+        number: -1,
+        range: -1,
+        time: '',
+        doctorName: '',
+        doctorId: '',
+        subjectName: ''
+      }
+    },
     clearRegistrationSheet () {
       console.log('取消挂号')
       HospitalService.clearRegistrationSheet({
-        doctorId: this.doctorId,
+        doctorId: this.registrationData.doctorId,
         userId: this.$store.state.token,
-        time: this.$store.state.registerTime,
-        range: this.$store.state.registerRange
+        time: this.registrationData.time,
+        range: this.registrationData.range
       }).then((res) => {
         console.log(res)
         if (res.status) {
-          this.setUserInfo()
+          // 清除数据
+          this.clearRegistrationData()
         }
       })
     },
@@ -123,6 +136,7 @@ export default {
           this.registrationData.time = userInfo.registerTime
           let doctor = await HospitalService.getADoctor({ doctorId: userInfo.registerDoctorId })
           this.registrationData.doctorName = doctor.data.name
+          this.registrationData.doctorId = doctor.data._id
           this.$store.state.subjects.map((data1, index) => {
             if (data1.value === userInfo.registerSubject[0]) {
               this.registrationData.subjectName = data1.label
