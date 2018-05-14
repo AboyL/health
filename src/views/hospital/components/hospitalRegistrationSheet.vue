@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-05-07 11:35:43
  * @Last Modified by: L
- * @Last Modified time: 2018-05-14 14:48:19
+ * @Last Modified time: 2018-05-14 22:47:21
  */
 <template>
   <div class="wrapper">
@@ -93,17 +93,18 @@ export default {
     },
     check (index) {
       let canRegister = true
+      console.log(index)
       switch (index) {
         case 0: canRegister = this.today.morning; break
-        case 1: canRegister = this.today.afternoon; break
-        case 2: canRegister = this.tomorrow.morning; break
-        case 3: canRegister = this.tomorrow.afternoon; break
-        case 4: canRegister = this.afterTomorrow.morning; break
+        case 1: canRegister = this.tomorrow.morning; break
+        case 2: canRegister = this.afterTomorrow.morning; break
+        case 3: canRegister = this.today.afternoon; break
+        case 4: canRegister = this.tomorrow.afternoon; break
         case 5: canRegister = this.afterTomorrow.afternoon; break
       }
       if (!canRegister) {
         util.warningMessage({
-          message: '所选时间挂号人数已达上限'
+          message: '此时间段不可进行预约'
         })
       } else {
         this.checkedList.forEach((data, index) => {
