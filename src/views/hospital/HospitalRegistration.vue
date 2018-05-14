@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:45
  * @Last Modified by: L
- * @Last Modified time: 2018-05-14 12:17:16
+ * @Last Modified time: 2018-05-14 18:16:44
  */
 <template>
   <div class="container">
@@ -128,6 +128,12 @@ export default {
         username: this.$store.state.username
       }).then(async (res) => {
         console.log(res)
+        if (res.data.userInfo.isPast === true) {
+          // 过期了
+          util.warningMessage({
+            message: '原挂号信息已经过期'
+          })
+        }
         if (res.data.userInfo.registerNumber) {
           let userInfo = res.data.userInfo
           this.showHospitalRegistrationSheet = false
