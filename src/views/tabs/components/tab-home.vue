@@ -39,6 +39,16 @@ export default {
           key: 'medical_history',
           content: '我的病历',
           cb: this.goMedicalHistory
+        },
+        {
+          key: 'symptomQuery',
+          content: '症状查询',
+          cb: this.goSymptomQuery
+        },
+        {
+          key: 'medicalKnowledge',
+          content: '医学常识',
+          cb: this.goMedicalKnowledge
         }
       ]
     }
@@ -46,7 +56,7 @@ export default {
   methods: {
     goHospitalRegistration () {
       if (this.$store.state.subject.length >= 2) {
-        this.$router.push({name: 'HospitalRegistration'})
+        this.$router.push({ name: 'HospitalRegistration' })
       } else {
         util.warningMessage({
           message: '请选择要就诊的科室'
@@ -54,10 +64,16 @@ export default {
       }
     },
     goCounsel () {
-      this.$router.push({name: 'HospitalCounsel'})
+      this.$router.push({ name: 'HospitalCounsel' })
     },
     goMedicalHistory () {
-      this.$router.push({name: 'hospitalMedicalHistory'})
+      this.$router.push({ name: 'hospitalMedicalHistory' })
+    },
+    goSymptomQuery () {
+      this.$router.push({ name: 'knowledgeSymptomQuery' })
+    },
+    goMedicalKnowledge () {
+      this.$router.push({ name: 'knowledgeMedicalKnowledge' })
     }
   }
 }

@@ -7,7 +7,8 @@
 <template>
   <div class="container">
     <Header :hasHeaderLeft=false
-            :title="headerTitle"></Header>
+            :title="headerTitle">
+    </Header>
     <el-tabs :tab-position="'bottom'"
              class="tabs"
              @tab-click="changeTab">
@@ -77,5 +78,4 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-
 </style>
