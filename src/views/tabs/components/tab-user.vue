@@ -6,7 +6,7 @@
  */
 <template>
   <div class="tab-user">
-    <label-list :LabelList="LabelList"></label-list>
+    <label-list :LabelList="LabelList" @click="click"></label-list>
   </div>
 </template>
 <script>
@@ -23,20 +23,27 @@ export default {
       LabelList: [
         {
           label: '用户名',
+          key: 'userName',
           content: this.$store.state.username
         },
         {
           label: '修改密码',
-          cb: this.changePass
+          key: 'chagePass'
         },
         {
           label: '退出登录',
-          cb: this.loginOut
+          key: 'loginOut'
         }
       ]
     }
   },
   methods: {
+    click (key) {
+      switch (key) {
+        case 'chagePass':this.changePass(); break
+        case 'loginOut':this.loginOut(); break
+      }
+    },
     loginOut () {
       util.loginOut()
     },

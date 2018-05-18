@@ -7,9 +7,9 @@
 <template>
 <div>
   <div class="item"
-  v-for="(item,index) of LabelList"
-  :key="index"
-  @click="item.cb?item.cb():()=>{}"
+  v-for="item of LabelList"
+  :key="item.key"
+  @click="click(item.key)"
   >
     <div class="label">
       {{item.label}}
@@ -26,6 +26,11 @@ export default {
   props: {
     LabelList: {
       type: Array
+    }
+  },
+  methods: {
+    click (key) {
+      this.$emit('click', key)
     }
   }
 }
