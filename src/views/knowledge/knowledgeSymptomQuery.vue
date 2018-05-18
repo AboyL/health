@@ -12,29 +12,13 @@
         <use xlink:href="#h-icon-sousuo"></use>
       </svg>
     </div>
-    <div class="symptomList"
-         v-if="showList">
-      <div class="list">
-        <div class="item"
-             v-for="item of symptomList"
-             :key="item.key">
-          {{item.name}}
-        </div>
-      </div>
-    </div>
-    <div class="common-symptom"
-         v-if="showCommon">
-      <div class="title">
-        常见症状
-      </div>
-      <div class="list">
-        <div class="item"
-             v-for="item of commonSymptomList"
-             :key="item.key">
-          {{item.name}}
-        </div>
-      </div>
-    </div>
+    <symptom-list v-if="showList"
+                  :symptomList="symptomList"
+                  @goDetail="goDetail">
+    </symptom-list>
+    <symptom-common-list v-if="showCommon"
+                         @goDetail="goDetail">
+    </symptom-common-list>
     <div v-if="cantFind"
          class="cantFind">
       没有找到你所要查看的症状
@@ -44,16 +28,19 @@
 <script>
 import Header from 'components/layout/Header.vue'
 import knowledgeService from 'service/knowledge.service.js'
+import symptomCommonList from './components/symptomCommonList'
+import symptomList from './components/symptomList'
 
 export default {
   name: 'knowledgeSymptomQuery',
   components: {
-    Header
+    Header,
+    symptomCommonList,
+    symptomList
   },
   data () {
     return {
       headerTitle: '查询知识',
-      commonSymptomList: [],
       symptomList: [],
       showCommon: true,
       showList: false,
@@ -77,16 +64,16 @@ export default {
         this.showList = false
         this.cantFind = true
       }
+    },
+    goDetail ({ key }) {
+      console.log(key)
+      this.$router.push({ name: 'knowledgeSymptomDetail', params: { key: key } })
     }
-  },
-  async mounted () {
-    this.commonSymptomList = (await knowledgeService.getCommonSymptom()).data.symptoms
   }
 }
 </script>
 <style scoped lang='scss'>
 @import '~style/variable.scss';
-$line: 0.4rem;
 .search-box {
   display: flex;
   padding: 5px;
@@ -95,7 +82,7 @@ $line: 0.4rem;
     border-radius: 15px;
     height: $line;
     line-height: $line;
-    padding: .3rem 15px;
+    padding: 0.3rem 15px;
     font-size: 12px;
     color: grey;
   }
@@ -104,39 +91,7 @@ $line: 0.4rem;
     font-size: 25px;
   }
 }
-.common-symptom {
-  padding: 0.1rem;
-  .title {
-    background: $bgColor;
-    color: white;
-    padding: 0.1rem;
-    border-radius: 0.1rem;
-  }
-  .list {
-    display: flex;
-    flex-wrap: wrap;
-    .item {
-      width: 25%;
-      padding: 0.1rem;
-      height: $line;
-      line-height: $line;
-      text-align: center;
-      border: 2px $border-color solid;
-      border-radius: 0.1rem;
-      margin: 0.1rem;
-    }
-  }
-}
-.list {
-  .item {
-    padding: 0.2rem;
-    margin: .1rem .2rem;
-    border: 2px $border-color solid;
-    border-radius: 0.1rem;
-    height: $line;
-    line-height: $line;
-  }
-}
+
 .cantFind {
   padding: 0.2rem;
   margin: 0 0.2rem;
