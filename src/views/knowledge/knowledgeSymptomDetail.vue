@@ -57,7 +57,5 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-.box-card{
-  margin: .1rem;
-}
+
 </style>

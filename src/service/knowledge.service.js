@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-05-17 21:43:00
  * @Last Modified by: L
- * @Last Modified time: 2018-05-18 10:57:42
+ * @Last Modified time: 2018-05-19 17:16:18
  */
 
 import util from 'util'
@@ -33,6 +33,23 @@ export default {
         data: {
           key
         }
+      }
+    )
+    return reslut
+  },
+  async getAllKnowledge () {
+    let reslut = await util.request(
+      {
+        url: 'knowledge/getAllKnowledge'
+      }
+    )
+    return reslut
+  },
+  async getKnowledge ({key}) {
+    let reslut = await util.request(
+      {
+        url: 'knowledge/getKnowledge',
+        data: {key}
       }
     )
     return reslut
