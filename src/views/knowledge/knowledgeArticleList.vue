@@ -5,10 +5,6 @@
     <el-card class="box-card"
              v-for="(item,index) of articleList"
              :key="item.key">
-      <!-- <div slot="header"
-           class="clearfix">
-        <span>{{item.title}}</span>
-      </div> -->
       <div class="text item"
            @click="goDetail(index)">
         {{ item.title}}

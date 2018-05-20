@@ -3,11 +3,6 @@
     <Header :title="headerTitle">
     </Header>
     <div class="list">
-      <!-- <div class="item"
-           v-for="item of list"
-           :key="item.key">
-        {{item.name}}
-      </div> -->
       <label-list :LabelList="list"
                   @click="goKnowledge"></label-list>
     </div>

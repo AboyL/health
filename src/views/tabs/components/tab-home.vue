@@ -49,6 +49,11 @@ export default {
           key: 'medicalKnowledge',
           content: '医学常识',
           cb: this.goMedicalKnowledge
+        },
+        {
+          key: 'hospitalCheckExplain',
+          content: '检查解读',
+          cb: this.goHospitalCheckExplain
         }
       ]
     }
@@ -74,6 +79,9 @@ export default {
     },
     goMedicalKnowledge () {
       this.$router.push({ name: 'knowledgeMedicalKnowledge' })
+    },
+    goHospitalCheckExplain () {
+      this.$router.push({ name: 'hospitalCheckExplain' })
     }
   }
 }

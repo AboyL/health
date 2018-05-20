@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-26 17:50:25
  * @Last Modified by: L
- * @Last Modified time: 2018-05-14 10:53:21
+ * @Last Modified time: 2018-05-20 15:44:10
  */
 
 import util from 'util'
@@ -83,6 +83,14 @@ export default {
       {
         url: 'hospital/clearRegistrationSheet',
         data
+      }
+    )
+    return reslut
+  },
+  async getCheckExplainSheet () {
+    let reslut = await util.request(
+      {
+        url: 'hospital/getCheckExplainSheet'
       }
     )
     return reslut
