@@ -33,8 +33,33 @@
                     :key="index">
           </row-item>
         </div>
+        <el-button type="success"
+                   round
+                   @click="showCheckSheet(item.checkSheetId)">查看报告单</el-button>
       </div>
     </div>
+    <el-dialog title="检查单"
+               :visible.sync="showCheckSheetBox">
+      <el-table :data="checkSheet">
+        <el-table-column property="name"
+                         label="检查项"
+                         width="100">
+        </el-table-column>
+        <el-table-column property="count"
+                         label="数值"
+                         width="100">
+        </el-table-column>
+        <el-table-column property="unit"
+                         label="单位"
+                         width="100">
+        </el-table-column>
+      </el-table>
+      <div slot="footer"
+           class="dialog-footer">
+        <el-button type="primary"
+                   @click="showCheckSheetBox = false">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -58,7 +83,24 @@ export default {
         unit: '单位',
         frequency: '次/天'
       },
-      hospitalMedicalHistory: []
+      hospitalMedicalHistory: [],
+      checkSheet: [],
+      showCheckSheetBox: false
+    }
+  },
+  methods: {
+    async showCheckSheet (checkSheetId) {
+      console.log(checkSheetId)
+      let checkSheet = await HospitalService.getCheckSheet({ checkSheetId })
+      if (checkSheet.status) {
+        this.showCheckSheetBox = true
+        this.checkSheet = checkSheet.data.checkSheet.result
+      } else {
+        util.warningMessage({
+          message: '加载失败'
+        })
+      }
+      console.log(checkSheet)
     }
   },
   mounted () {
@@ -78,5 +120,4 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-
 </style>
