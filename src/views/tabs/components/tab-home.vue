@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:54
  * @Last Modified by: L
- * @Last Modified time: 2018-05-02 16:32:27
+ * @Last Modified time: 2018-05-21 16:00:13
  */
 <template>
   <div class="tab-home">
@@ -54,6 +54,16 @@ export default {
           key: 'hospitalCheckExplain',
           content: '检查解读',
           cb: this.goHospitalCheckExplain
+        },
+        {
+          key: 'hospitalPhysicalExamination',
+          content: '健康体检',
+          cb: this.goHospitalPhysicalExamination
+        },
+        {
+          key: 'userPhysicalExamination',
+          content: '我的体检',
+          cb: this.goUserPhysicalExamination
         }
       ]
     }
@@ -82,6 +92,12 @@ export default {
     },
     goHospitalCheckExplain () {
       this.$router.push({ name: 'hospitalCheckExplain' })
+    },
+    goHospitalPhysicalExamination () {
+      this.$router.push({ name: 'hospitalPhysicalExamination' })
+    },
+    goUserPhysicalExamination () {
+      this.$router.push({ name: 'userPhysicalExamination' })
     }
   }
 }

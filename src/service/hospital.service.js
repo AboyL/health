@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-26 17:50:25
  * @Last Modified by: L
- * @Last Modified time: 2018-05-21 00:40:57
+ * @Last Modified time: 2018-05-21 21:06:05
  */
 
 import util from 'util'
@@ -95,12 +95,56 @@ export default {
     )
     return reslut
   },
-  async getCheckSheet ({checkSheetId}) {
+  async getCheckSheet ({ checkSheetId }) {
     let reslut = await util.request(
       {
         url: 'hospital/getCheckSheet',
         data: {
           checkSheetId
+        }
+      }
+    )
+    return reslut
+  },
+  async getPhysicalExaminationList () {
+    let reslut = await util.request(
+      {
+        url: 'hospital/getPhysicalExaminationList'
+      }
+    )
+    return reslut
+  },
+  async getPhysicalExamination ({ key }) {
+    let reslut = await util.request(
+      {
+        url: 'hospital/getPhysicalExamination',
+        data: {
+          key
+        }
+      }
+    )
+    return reslut
+  },
+  async submitPhysicalExamination ({ key, username, date }) {
+    let reslut = await util.request(
+      {
+        url: 'hospital/submitPhysicalExamination',
+        data: {
+          key,
+          username,
+          date
+        }
+      }
+    )
+    return reslut
+  },
+  async cancelPhysicalExamination ({ physicalExaminationId, username }) {
+    let reslut = await util.request(
+      {
+        url: 'hospital/cancelPhysicalExamination',
+        data: {
+          physicalExaminationId,
+          username
         }
       }
     )

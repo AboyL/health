@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-04-30 16:11:05
+ * @Last Modified time: 2018-05-21 17:16:04
  */
 <template>
   <div class="container">
@@ -78,4 +78,41 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
+@import '~style/variable.scss';
+@import '~style/mixin.scss';
+.container /deep/ .el-tabs {
+  position: absolute !important;
+  bottom: 0;
+  top: $headerHeight;
+  left: 0;
+  right: 0;
+  .el-tabs__content {
+    overflow: hidden !important;
+    position: absolute !important;
+    bottom: 40px !important;
+    top: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    .el-tab-pane {
+      height: 100% !important;
+    }
+  }
+  .el-tabs__header {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    border-top: 1px solid $border-color !important;
+    .el-tabs__nav-scroll {
+      .el-tabs__nav {
+        display: flex !important;
+        width: 100% !important;
+        .el-tabs__item {
+          flex: 1 !important;
+          text-align: center !important;
+        }
+      }
+    }
+  }
+}
 </style>

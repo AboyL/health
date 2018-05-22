@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 15:53:51
  * @Last Modified by: L
- * @Last Modified time: 2018-05-14 00:23:17
+ * @Last Modified time: 2018-05-21 16:08:04
  */
 
 import axios from 'axios'
@@ -54,11 +54,59 @@ export default {
   loginOut () {
     this.goLogin()
   },
-  getUserInfo (data) {
+  getUserInfo ({ username }) {
     return this.request({
       url: 'user/getUserInfo',
-      data: data
+      data: {
+        username
+      }
     })
+  },
+  getFormatDate: (date) => {
+    if (date instanceof Date) {
+      let year = date.getFullYear()
+      let month = date.getMonth() + 1
+      let day = date.getDate()
+      let hour = date.getHours()
+      let minute = date.getMinutes()
+      let seconds = date.getSeconds()
+      let formatTime = `${year}-${month}-${day} ${hour}:${minute}:${seconds}`
+      console.log('format---------data')
+      console.log(formatTime)
+      return formatTime
+    } else {
+      throw Error('非日期类型')
+    }
+  },
+  getFormatDay: (date, difference) => {
+    if (date instanceof Date) {
+      if (difference) {
+        date.setTime(date.getTime() + difference * 24 * 60 * 60 * 1000)
+      }
+      let year = date.getFullYear()
+      let month = date.getMonth() + 1
+      let day = date.getDate()
+      let formatTime = `${year}-${month}-${day}`
+      return formatTime
+    } else {
+      throw Error('非日期类型')
+    }
+  },
+  deepCopy: (obj) => {
+    let str = obj.constructor === Array ? [] : {}
+    let newobj = obj.constructor === Array ? [] : {}
+    if (typeof obj !== 'object') {
+      return
+    } else if (window.JSON) {
+      str = JSON.stringify(obj) // 系列化对象
+      newobj = JSON.parse(str) // 还原
+    } else {
+      for (var i in obj) {
+        newobj[i] = typeof obj[i] === 'object'
+          ? this.deepCopy(obj[i]) : obj[i]
+      }
+    }
+    return newobj
   }
 
 }
