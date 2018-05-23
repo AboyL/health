@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-25 23:31:21
  * @Last Modified by: L
- * @Last Modified time: 2018-04-30 16:25:39
+ * @Last Modified time: 2018-05-22 15:21:19
  */
 <template>
   <div class="list">
@@ -34,7 +34,7 @@ export default {
 .list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   padding: 0.3rem;
   .item {
     @include gradual-background;

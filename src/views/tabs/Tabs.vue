@@ -2,7 +2,7 @@
  * @Author: L
  * @Date: 2018-04-21 16:32:00
  * @Last Modified by: L
- * @Last Modified time: 2018-05-21 17:16:04
+ * @Last Modified time: 2018-05-22 15:20:08
  */
 <template>
   <div class="container">
@@ -110,6 +110,7 @@ export default {
         .el-tabs__item {
           flex: 1 !important;
           text-align: center !important;
+
         }
       }
     }
